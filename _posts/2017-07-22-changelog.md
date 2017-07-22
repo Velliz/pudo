@@ -3,12 +3,8 @@ layout: page
 title: "Changelog"
 category: dev
 date: 2017-07-22 15:20:12
-order: 5
+order: 2
 ---
-
-<img align="left" src="https://github.com/Velliz/pukodocs/blob/gh-pages/icon/material/puko-material-50.png">
-
-## Puko Framework Changelog
 
 **The 0.x.x version is not released because it's not production ready**
 
@@ -44,12 +40,14 @@ order: 5
 
 ### 0.8.2-beta (9 May 2016)
 * Create different output type in Controller.
+
 ```PHP
 class Example extends View {
 ```
 ```PHP
 class Example extends Service {
 ```
+
 * Create 404 Not Found Pages handling.
 
 ### 0.9.0-beta (12 May 2016)

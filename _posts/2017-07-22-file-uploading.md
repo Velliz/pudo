@@ -3,7 +3,7 @@ layout: page
 title: "File Uploading"
 category: ref
 date: 2017-07-22 15:14:16
-order: 10
+order: 5
 ---
 
 Mengunggah gambar menggunakan puko sangat mudah. kamu bisa langsung menyimpan gambar unggahan kamu menggunakan contoh

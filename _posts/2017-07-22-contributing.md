@@ -3,11 +3,8 @@ layout: page
 title: "Contributing"
 category: dev
 date: 2017-07-22 14:29:39
-order: 7
-disqus: 1
+order: 1
 ---
-
-# How to contribute
 
 Puko Framework is originaly known as a simple template engine. 
 But in spring 2016 i decide to add a MVC mechanism to it.
@@ -39,11 +36,11 @@ You can check a compete development history from this [link](https://github.com/
 
 You can also check the on going feature from this [link](https://github.com/Velliz/pukoframework/blob/master/todo.md)
 
-## Code standard
+### Code standard
 
 For coding style and rules i use standard from CtyleCI. so it can done automaticly.
 
-## Contributing mechanism
+### Contributing mechanism
 
 **Contribute to code**
 
@@ -60,16 +57,9 @@ If you want to contribute to write docs or translating the docs you can get from
 
 If you want to contribute to provide sample app. Get the projects from this [link](https://github.com/Velliz/pukoexample)
 
-## Framework logo
+### Framework logo
 
-<img src="https://github.com/Velliz/pukodocs/blob/gh-pages/icon/material/puko-material-200.png">
+<img src="../img/puko-material-200.png">
 
 If you want to make the logo better you can contribute to by post [issues](https://github.com/Velliz/pukoframework/issues) 
 about the logo.
-
-
-
-
-
-
-

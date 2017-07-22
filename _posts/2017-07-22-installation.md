@@ -3,7 +3,7 @@ layout: page
 title: "Installation"
 category: ref
 date: 2017-07-22 14:31:12
-order: 12
+order: 1
 ---
 
 Sebelum dapat menggunakan Puko Framework kamu harus menginstall **composer** Yup! Composer adalah dependency manager yang dibuat untuk bahasa PHP.
