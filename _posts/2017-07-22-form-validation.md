@@ -6,8 +6,6 @@ date: 2017-07-22 14:33:19
 order: 11
 ---
 
-
-
 Langkah-langkah untuk Validasi form POST cukup mudah.
 Pertama yang harus kamu lakukan adalah membuat form dengan ketentuan.
 

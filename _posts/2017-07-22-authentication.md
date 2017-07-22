@@ -6,8 +6,6 @@ date: 2017-07-22 15:13:33
 order: 4
 ---
 
-
-
 Login, Logout dan Session pada Puko Framework dapat diatur dari controller. cara menggunakannya adalah dengan mengimplementasikan interface bernama **Auth**.
 Jika kamu mengimplementasikan interface ini, otomatis wajib mengimplementasikan / override tiga buah method bernama 
 

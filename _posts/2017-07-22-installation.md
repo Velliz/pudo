@@ -6,8 +6,6 @@ date: 2017-07-22 14:31:12
 order: 12
 ---
 
-
-
 Sebelum dapat menggunakan Puko Framework kamu harus menginstall **composer** Yup! Composer adalah dependency manager yang dibuat untuk bahasa PHP.
 Kenapa harus menggunakan Composer? Karena, singkatnya. Puko Framework adalah MVC Framework yang ke-kinian serta berbasis modular.
 Tapi jangan khawatir. Cara installnya sederhana kok. 
