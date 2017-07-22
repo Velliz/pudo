@@ -3,6 +3,8 @@ layout: page
 title: "Contributing"
 category: dev
 date: 2017-07-22 14:29:39
+order: 7
+disqus: 1
 ---
 
 # How to contribute

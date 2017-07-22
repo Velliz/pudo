@@ -3,6 +3,7 @@ layout: page
 title: "Changelog"
 category: dev
 date: 2017-07-22 15:20:12
+order: 5
 ---
 
 <img align="left" src="https://github.com/Velliz/pukodocs/blob/gh-pages/icon/material/puko-material-50.png">

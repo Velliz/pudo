@@ -5,6 +5,8 @@ title: "Welcome"
 
 ## Puko Framework
 
+<img src="https://github.com/Velliz/pukodocs/blob/gh-pages/icon/material/puko-material-200.png">
+
 [![Latest Stable Version](https://poser.pugx.org/puko/framework/v/stable)](https://packagist.org/packages/puko/framework)
 [![Total Downloads](https://poser.pugx.org/puko/framework/downloads)](https://packagist.org/packages/puko/framework)
 [![Build Status](https://travis-ci.org/Velliz/pukoframework.svg?branch=master)](https://travis-ci.org/Velliz/pukoframework)
