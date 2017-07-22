@@ -1,0 +1,6 @@
+*.sw?
+_site
+_pages
+.idea
+vendor/
+composer.lock
