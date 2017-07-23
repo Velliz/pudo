@@ -3,7 +3,9 @@ layout: default
 title: "Welcome"
 ---
 
-## Puko Framework <img src="img/puko-material-50.png" width="30px" height="30px">
+<div class="page-header">
+    <h2>Puko Framework</h2>
+</div>
 
 Selamat datang di dokumentasi Puko Framework
 

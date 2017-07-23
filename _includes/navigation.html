@@ -6,9 +6,14 @@
 
         {% for page in site.categories[attr] %}
             {% if forloop.first %}
-                <li class="nav-header">{{ label }}</li>
+                <li class="nav-header accordion-heading" data-toggle="collapse" data-target="#{{ label }}">
+                    {{ label }}
+                    <span class="pull-right"><b class="caret"></b></span>
+                </li>
             {% endif %}
-            <li data-order="{{ page.order }}"><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+            <li data-order="{{ page.order }}" id="{{ label }}">
+                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
+            </li>
         {% endfor %}
     {% endfor %}
 <!-- List additional links. It is recommended to add a divider
