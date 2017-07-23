@@ -23,7 +23,8 @@ and also Puko Comand Line Interface (PCLI).
 **Code**
 
 The framework itself that consists core of the feature of Puko Framework including.
-```php
+
+```text
 Puko Docs Comand (PDC)
 Puko Templating Engine (PTE)
 Puko Data Access (PDA)

@@ -1,6 +1,6 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'Puko Framework'
-subtitle: 'MVC framework for quick PHP application development'
+subtitle: 'Documentation'
 
 # if you wish to integrate disqus on pages set your shortname here
 disqus_shortname: 'pukoframework'

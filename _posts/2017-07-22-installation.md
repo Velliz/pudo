@@ -6,24 +6,22 @@ date: 2017-07-22 14:31:12
 order: 1
 ---
 
-Sebelum dapat menggunakan Puko Framework kamu harus menginstall **composer** Yup! Composer adalah dependency manager yang dibuat untuk bahasa PHP.
-Kenapa harus menggunakan Composer? Karena, singkatnya. Puko Framework adalah MVC Framework yang ke-kinian serta berbasis modular.
-Tapi jangan khawatir. Cara installnya sederhana kok. 
+Cara yang paling mudah untuk memasang *Puko Framework* adalah dengan menggunakan **composer**. Anda hanya perlu menuliskan perintah:
 
-Pertama kamu harus install [Composer](https://getcomposer.org/download/).
-Jika sudah selesai, kamu dapat mendonload file dengan 2 cara: 
-
-* .zip [download](https://github.com/Velliz/puko/archive/master.zip) 
-
-kemudian melakukan installasi CORE Modul dengan menjalankan perintah
-
+```text
+composer create-project velliz/puko appname
 ```
+pada jendela console dengan parameter **appname** yang disesuaikan dengan nama project anda.
+
+---
+
+Cara lainnya, anda juga dapat mendownload file terkompresi dengan format .zip [disini](https://github.com/Velliz/puko/archive/master.zip)
+kemudian melakukan pemasangan komponen yang dibutuhkan dengan mengetikan perintah
+
+```text
 composer install
 ```
 
-* Composer command **composer create-project velliz/puko nama_aplikasi**
+---
 
-
-
-Akhirnya selamat!
-Kamu telah berhasil menginstall dan mengkonfigurasi Puko Framework.
+Jika anda belum memiliki composer anda dapat melakukan installasi dengan mengunjungi website [getcomposer.org](https://getcomposer.org/)

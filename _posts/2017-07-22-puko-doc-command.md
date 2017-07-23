@@ -6,8 +6,6 @@ date: 2017-07-22 14:32:39
 order: 7
 ---
 
-
-
 Untuk mempercepat pembangunan aplikasi, Puko Framework mempunyai utilitas PDC yang penerapannya dilakukan dengan menulis komentar pada file **controller**
 Yup, komentar seperti misalnya:
 
