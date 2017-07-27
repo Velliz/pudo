@@ -13,7 +13,7 @@ Serta nama **function** dengan menggunakan huruf kecil semua.
 
 controller pada Puko Framework juga wajib diberi namespace
 
-```PHP
+```php
 namespace controller;
 ```
 
@@ -26,7 +26,7 @@ Sedangan **Service** adalah tipe controller yang pada final prosessnya akan meng
 
 Contoh menggunakan **View**
 
-```PHP
+```php
 <?php
 namespace controller;
 
@@ -42,7 +42,7 @@ class member extends View
 
 Contoh menggunakan **Service**
 
-```PHP
+```php
 <?php
 namespace controller;
 

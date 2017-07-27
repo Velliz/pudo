@@ -11,8 +11,11 @@ order: 8
 Puko Template Engine adalah agen yang ditugas khususkan untuk mengolah tampilan. Untuk penggunaanya, Intinya kamu harus punya kelas controller yang bertipe View.
 Kemudian kamu juga harus memiliki return data array pada setiap functionnya. Untuk memudahkan, kamu bisa membuat contoh controller seperti berikut.
 
-```
+```php
+<?php
+
 namespace controller;
+
 use pukoframework\pte\View;
 
 class main extends View implements Auth
@@ -50,7 +53,7 @@ class main extends View implements Auth
 
 Lalu, buatlah dua buah file .html pada direktori
 
-```
+```text
 - assets/
   - html/
     - id/
@@ -62,7 +65,7 @@ Lalu, buatlah dua buah file .html pada direktori
 master.html berfungsi sebagai indukan file, jadi kamu tidak perlu repot untuk menulis <head> dan <footer> berulang ulang disetiap page.
 untuk detilnya kamu bisa melihat contoh berikut.
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +84,7 @@ Jadi, jika kamu mengeksekusi function main, maka {CONTENT} akan berubah menjadi 
 
 Sekarang kita coba isi file main.html dengan contoh berikut.
 
-```
+```html
 <h3>{!SomeKey}</h3>
 <p>{!Description}</p>
 
@@ -107,7 +110,7 @@ Sekarang kita coba isi file main.html dengan contoh berikut.
 
 Jika kamu membuka halaman websitenya sekarang, kamu akan menemukan bahwa browser menerima file seperti ini.
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +169,7 @@ Ketika menggunakan sistem master layout,
 ada saat dimana kita menginginkan sebuah file script/javascript dan style/css tertentu untuk diload pada halaman tertentu saja.
 cara sederhanannya adalah dengan menuliskannya pada template kamu dengan cara:
  
-```
+```html
 {!CSS}
 <link href="{URL}assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 {/CSS}
@@ -200,7 +203,7 @@ cara sederhanannya adalah dengan menuliskannya pada template kamu dengan cara:
 
 Kemudian kamu tinggal mendefinisikan dimaster layout, penempatan mereka seperti:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

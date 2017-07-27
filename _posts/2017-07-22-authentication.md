@@ -15,8 +15,9 @@ Jika kamu mengimplementasikan interface ini, otomatis wajib mengimplementasikan 
 
 contohnya seperti ini:
 
-```
+```php
 <?php
+
 namespace controller;
 
 use pukoframework\auth\Auth;
@@ -51,7 +52,7 @@ class member extends View implements Auth
 Untuk keperluan login, kamu bisa menuliskan logika login dalam fungsi **Login($username, $password)**
 Misalnya select data dari database. contohnya seperti ini
 
-```
+```php
 public function Login($username, $password)
 {
     $loginResult = Database::GetUser($username, md5($password))[0];
@@ -76,7 +77,7 @@ untuk parameter ketiga yaitu **Auth** terdapat beberapa pilihan untuk menentukan
 
 Contoh
 
-```
+```php
 public function main()
 {
     if (Request::IsPost()) {
@@ -100,7 +101,7 @@ Jika login berhasil, Puko Framework akan membuat sebuah COOKIE bernama puko.
 Sedangkan untuk logout, kamu bisa menuliskan juga kode apa yang akan dijalankan sebelum user tersebut logout.
 Misalnya menghapus cookies dan sebagainya. contohnya seperti ini
                                            
-```
+```php
 public function Logout()
 {
    unset($_COOKIE['cart']);
@@ -114,7 +115,7 @@ dimana $id adalah parameter berisi data yang di-return pada fungsi Login.
 Pada contoh diatas kita hanya menyimpan ID dari user yang berhasil login. 
 Sehingga untuk mendapatkan data user lain selain ID maka kita harus menambahkan kodenya.
  
-```
+```php
 public function GetLoginData($id)
 {
     return DBAnywhere::GetUserById($id)[0];
