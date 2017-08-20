@@ -39,7 +39,7 @@ Berikut ini adalah tabel lengkap daftar command yang tersedia.
 |#Template|html|true/false|Opsi untuk mengeluarkan html file pada browser|
 |#Date|before/after|d-m-Y H:i:s|Opsi untuk pengaksesan **function** Jadi kalau waktu server diluar waktu yang ditentukan maka **function** tidak dapat diakses|
 |#ClearOutput|-|true/false|Opsi untuk membersihkan semua tag '{!}' kosong. true untuk membersihkan, false untuk tetap menampilkannya|
-|#Auth|-|true/false|Opsi untuk pengaksesan fungsi. true untuk mengijinkan yang sudah login saja, false untuk mengijinkan semua|
+|#Auth|true/false|+|Opsi untuk pengaksesan fungsi. true untuk mengijinkan yang sudah login saja, false untuk mengijinkan semua|
 |#Master|-|master.html|Mengunakan custom file untuk master layout|
 
 Selain itu PDC juga dapat diterapkan diatas nama controller. 
@@ -64,6 +64,9 @@ namespace controller;
     {
     }
     
+    /**
+    * #Auth true +
+    */
     public function thankyou()
     {
     }
