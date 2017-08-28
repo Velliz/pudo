@@ -33,3 +33,15 @@ public function profile()
 {
 }
 ```
+
+Jika hanya menggunakan authentikasi tanpa permission maka bisa ditulis seperti ini.
+```php
+<?php
+/**
+ * #Value title HELLO
+ * #Auth true +
+ */
+public function profile()
+{
+}
+```
