@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "permissions"
+title: "Permissions"
 category: doc
 date: 2017-08-28 21:20:53
 ---
