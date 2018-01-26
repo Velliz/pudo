@@ -1,5 +1,5 @@
 ---
-title: Welcome
+title: Official Documentation
 ---
 
 [![Build Status](https://travis-ci.org/Velliz/pukoframework.svg?branch=master)](https://travis-ci.org/Velliz/pukoframework)

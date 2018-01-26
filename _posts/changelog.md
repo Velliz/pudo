@@ -1,9 +1,6 @@
 ---
-layout: page
-title: "Changelog"
-category: dev
-date: 2017-07-22 15:20:12
-order: 2
+title:
+type: major
 ---
 
 **The 0.x.x version is not released because it's not production ready**
