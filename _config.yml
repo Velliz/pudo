@@ -1,57 +1,77 @@
-# Site title and subtitle. This is used in _includes/header.html
-title: 'Puko Framework'
-subtitle: 'Documentation'
+# ----
+# Site
 
-# if you wish to integrate disqus on pages set your shortname here
-disqus_shortname: 'pukoframework'
+title: "Puko Framework"
+url: "https://github.com/Velliz/pukoframework"
+baseurl:
+google_analytics_key: "UA-103032494-1"
+show_full_navigation: true
 
-# if you use google analytics, add your tracking id here
-google_analytics_id: 'UA-103032494-1'
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Documentation for Puko Framework.
+author:
+  name: Didit Velliz
+  email: diditvelliz@gmail.com
+  twitter: diditvelliz
+social:
+  name: Puko Framework
+  links:
+    - https://github.com/Velliz/pukoframework
 
-# Enable/show navigation. There are there options:
-#   0 - always hide
-#   1 - always show
-#   2 - show only if posts are present
-navigation: 2
+# -----
+# Build
 
-# URL to source code, used in _includes/footer.html
-codeurl: 'https://github.com/Velliz/puko'
+permalink: pretty
 
-# Default categories (in order) to appear in the navigation
-sections: [
-    ['doc', 'Documentation'],
-    ['tut', 'Tutorial'],
-    ['ref', 'Reference'],
-    ['dev', 'Developers'],
-    ['post', 'Posts']
-]
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
 
-# Keep as an empty string if served up at the root. If served up at a specific
-# path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
-baseurl: '/pudo'
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE
 
-# Dates are not included in permalinks
-permalink: none
+collections:
+  docs:
+    title: Documentation
+    permalink: /:path/
+    output: true
 
-# Syntax highlighting
-highlighter: rouge
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Article
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+      _options:
+        content:
+          width: 800
+          height: 2000
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      _comments:
+        type: Marks the impact of this release
 
-# Since these are pages, it doesn't really matter
-future: true
+# -----------
+# CloudCannon
 
-# Exclude non-site files
-exclude: ['bin', 'README.md']
-
-# Use the kramdown Markdown renderer
-markdown: kramdown
-redcarpet:
-    extensions: [
-        'no_intra_emphasis',
-        'fenced_code_blocks',
-        'autolink',
-        'strikethrough',
-        'superscript',
-        'with_toc_data',
-        'tables',
-        'hardwrap'
-    ]
+types:
+  - minor
+  - major

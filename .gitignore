@@ -1,6 +1,8 @@
 *.sw?
-_site
 _pages
 .idea
 vendor/
 composer.lock
+_site/
+.sass-cache/
+.jekyll-metadata
