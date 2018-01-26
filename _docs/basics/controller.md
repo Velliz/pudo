@@ -25,7 +25,6 @@ Sedangan **Service** adalah tipe controller yang pada final prosessnya akan meng
 Contoh menggunakan **View**
 
 ```php
-<?php
 namespace controller;
 
 use pukoframework\pte\View;

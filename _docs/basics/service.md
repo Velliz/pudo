@@ -8,8 +8,6 @@ Kali ini mari kita bahas tentang controller yang menjadi Service.
 Singkatnya, jika kamu mempunyai.
 
 ```php
-<?php
-
 namespace controller;
 
 use pukoframework\pte\Service;

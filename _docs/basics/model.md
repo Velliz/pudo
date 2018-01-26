@@ -8,8 +8,6 @@ Untuk dapat menggunakan database kamu harus menyiapkan konfigurasi terlebih dahu
 Kamu bisa menyesuaikannya dengan pengaturan masing-masing komputer yang digunakan.
 
 ```php
-<?php
-
 return array(
     'dbType' => 'mysql',
     'host' => 'localhost',
@@ -25,8 +23,6 @@ Berikut ini adalah contoh model class sederhana yang bisa kamu buat.
 Setiap kelas model wajib dinamai dengan huruf kecil semua. Kemudian model wajib menggunakan
 
 ```php
-<?php
-
 namespace model;
 
 use pukoframework\pda\DBI;
@@ -43,8 +39,6 @@ Untuk query Insert atau Update, kamu bisa memasukan nama tabel atau memasukan qu
 Untuk lebih jelasnya, yuk lihat contoh sebuah kelas model dengan CRUD method didalamnya dibawah ini.
 
 ```php
-<?php
-
 namespace model;
 
 use pukoframework\pda\DBI;

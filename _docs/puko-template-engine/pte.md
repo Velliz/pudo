@@ -8,8 +8,6 @@ Puko Template Engine adalah agen yang ditugas khususkan untuk mengolah tampilan.
 Kemudian kamu juga harus memiliki return data array pada setiap functionnya. Untuk memudahkan, kamu bisa membuat contoh controller seperti berikut.
 
 ```php
-<?php
-
 namespace controller;
 
 use pukoframework\pte\View;

@@ -8,7 +8,6 @@ order: 6
 dengan konfigurasi default
 
 ```php
-<?php
 return array(
     'dbType' => 'mysql',
     'host' => 'localhost',

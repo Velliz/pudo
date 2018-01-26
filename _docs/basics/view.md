@@ -22,7 +22,7 @@ class yourclass extends View {
 
 maka kamu wajib menyertakan file .html sebagai pendamping controller kamu.
 
-```
+```text
 - assets/
   - html/
     - id/
@@ -35,7 +35,7 @@ Jadi, setiap kelas **yourclass** kamu wajib memiliki sebuah file bernama **maste
 Jadi kamu TIDAK BOLEH membuat function atau nama method dengan nama **master**. 
 Berikut contoh dari file master.html
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>

@@ -14,8 +14,6 @@ Jika kamu mengimplementasikan interface ini, otomatis wajib mengimplementasikan 
 contohnya seperti ini:
 
 ```php
-<?php
-
 namespace controller;
 
 use pukoframework\auth\Auth;
@@ -61,7 +59,7 @@ public function Login($username, $password)
 
 kemudian menjalankan function Login kamu melalui function lain misal pada 'main'
 
-```
+```php
 Session::Get($this)->Login($username, md5($password), Auth::EXPIRED_1_WEEK)
 ```
 

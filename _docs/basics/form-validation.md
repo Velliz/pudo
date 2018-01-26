@@ -32,14 +32,14 @@ caranya adalah dengan menangkap POST input yang dikirimkan dengan **Request::Pos
 * *name adalah form name*
 * *default adalah nilai pengganti jika tidak diteukan nilai / null*
 
-```
+```php
 $username = Request::Post('username', null);
 $password = Request::Post('password', null);
 ```
 
 Serta menggunakan **Request::IsPost()** untuk memastikan ke-valid-an form input dan pencegahan dari serangan CSRF (Cross Site Request Forgery)
 
-```
+```php
 public function login()
 {
     if (Request::IsPost()) {
@@ -65,7 +65,7 @@ yang artinya eksekusi controller akan berhenti dan pesan **Username harus diisi*
 untuk menampilkannya kamu cukup menambahkan tag Exception pada file .html kamu.
 
 
-```
+```html
 <!--{!!Exception}-->
     {!ExceptionMessage}
 <!--{/Exception}-->

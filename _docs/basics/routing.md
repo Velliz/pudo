@@ -5,7 +5,6 @@ order: 1
 ---
 
 ```php
-<?php 
 $data['page'] = array(
     '' => array(
         'controller' => 'main',

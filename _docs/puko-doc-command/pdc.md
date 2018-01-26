@@ -8,8 +8,6 @@ Untuk mempercepat pembangunan aplikasi *Puko Framework* mempunyai utilitas yang 
 dilakukan dengan menulis komentar pada file **controller** komentar seperti misalnya pada kelas
 
 ```php
-<?php 
-
 namespace controller;
 
 /**
@@ -46,8 +44,6 @@ Jika PDC didefinisikan di **function** dan **class** maka PDC yang digunakan ada
 Contoh sederhananya sebagai berikut.
 
 ```php
-<?php
-
 namespace controller;
 
 /**
