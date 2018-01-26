@@ -1,5 +1,5 @@
 ---
-title:
+title: release
 type: major
 ---
 
