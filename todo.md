@@ -1,9 +1,5 @@
 ---
-layout: page
-title: "Todo"
-category: dev
-date: 2017-07-22 14:29:33
-order: 3
+title: Todo
 ---
 
 ### Puko Database Access (PDA)

@@ -1,9 +1,5 @@
 ---
-layout: page
-title: "Contributing"
-category: dev
-date: 2017-07-22 14:29:39
-order: 1
+title: Contributing
 ---
 
 Puko Framework is originaly known as a simple template engine. 

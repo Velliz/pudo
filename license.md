@@ -1,9 +1,5 @@
 ---
-layout: page
-title: "License"
-category: dev
-date: 2017-07-22 14:29:46
-order: 4
+title: License
 ---
 
 MIT License
