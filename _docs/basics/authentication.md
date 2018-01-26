@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Authentication"
-category: doc
-date: 2017-07-22 15:13:33
-order: 4
+title: Authentication
+category: basics
+order: 7
 ---
 
 Login, Logout dan Session pada Puko Framework dapat diatur dari controller. cara menggunakannya adalah dengan mengimplementasikan interface bernama **Auth**.

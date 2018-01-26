@@ -1,8 +1,7 @@
 ---
-layout: page
-title: "DataTables Class"
-category: ref
-date: 2017-11-25 14:26:14
+title: DataTable Server Processing
+category: Advanced
+order: 4
 ---
 
 ```php

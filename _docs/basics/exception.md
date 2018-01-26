@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Exception Handling"
-category: doc
-date: 2017-07-22 14:33:28
-order: 10
+title: Exception Handling
+category: basics
+order: 1
 ---
 
 Untuk mengatasi error. Kita perlu mengkategorikan error yang terjadi. Misalkan error karena kesalahan pengetikan URL.

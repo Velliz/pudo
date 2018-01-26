@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Service"
-category: doc
-date: 2017-07-22 14:31:52
-order: 2
+title: Service
+category: basics
+order: 5
 ---
 
 Kali ini mari kita bahas tentang controller yang menjadi Service.

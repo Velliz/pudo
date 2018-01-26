@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Database"
-category: ref
-date: 2017-07-22 15:30:33
-order: 3
+title: Database
+category: basics
+order: 6
 ---
 
 *Puko Framework* menggunakan PDO sebagai database wrapper dan menyimpan pengaturan database pada file *config/database.php*

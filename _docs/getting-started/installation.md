@@ -1,8 +1,6 @@
 ---
-layout: page
-title: "Installation"
-category: ref
-date: 2017-07-22 14:31:12
+title: Getting Started
+category: Getting Started
 order: 1
 ---
 

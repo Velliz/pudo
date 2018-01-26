@@ -1,8 +1,7 @@
 ---
-layout: page
-title: "Permissions"
-category: doc
-date: 2017-08-28 21:20:53
+title: Permissions
+category: basics
+order: 8
 ---
 
 Untuk mengimplementasikan permission pertama lakukan login.

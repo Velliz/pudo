@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "View"
-category: doc
-date: 2017-07-22 14:31:48
-order: 3
+title: View
+category: basics
+order: 4
 ---
 
 

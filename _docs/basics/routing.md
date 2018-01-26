@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Routing in 1.1.0"
-category: doc
-date: 2017-07-22 14:32:25
-order: 11
+title: Routing
+category: basics
+order: 1
 ---
 
 ```php

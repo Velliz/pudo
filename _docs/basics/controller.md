@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Controller"
-category: doc
-date: 2017-01-01 14:31:44
-order: 1
+title: Controller
+category: basics
+order: 2
 ---
 
 

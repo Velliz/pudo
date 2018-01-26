@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Model"
-category: doc
-date: 2017-07-22 14:32:05
-order: 6
+title: Model
+category: basics
+order: 3
 ---
 
 Untuk dapat menggunakan database kamu harus menyiapkan konfigurasi terlebih dahulu yang dapat kamu temukan pada **config/database.php**

@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "File Uploading"
-category: ref
-date: 2017-07-22 15:14:16
-order: 5
+title: File Uploading
+category: Advanced
+order: 1
 ---
 
 *Puko Framework* menyediakan utility untuk melakukan proses upload file. 
