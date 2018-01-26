@@ -1,6 +1,6 @@
 ---
 title: Form Validation
-category: basics
+category: Basics
 order: 9
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Controller
-category: basics
+category: Basics
 order: 2
 ---
 

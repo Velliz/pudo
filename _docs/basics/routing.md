@@ -1,6 +1,6 @@
 ---
 title: Routing
-category: basics
+category: Basics
 order: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Service
-category: basics
+category: Basics
 order: 5
 ---
 

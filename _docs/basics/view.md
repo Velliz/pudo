@@ -1,6 +1,6 @@
 ---
 title: View
-category: basics
+category: Basics
 order: 4
 ---
 

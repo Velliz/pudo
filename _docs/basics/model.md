@@ -1,6 +1,6 @@
 ---
 title: Model
-category: basics
+category: Basics
 order: 3
 ---
 

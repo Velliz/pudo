@@ -1,6 +1,6 @@
 ---
 title: Permissions
-category: basics
+category: Basics
 order: 8
 ---
 

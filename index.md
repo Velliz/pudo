@@ -1,18 +1,10 @@
 ---
-layout: default
-title: "Welcome"
+title: Welcome
 ---
 
-<div class="page-header">
-    <h2>Puko Framework</h2>
-</div>
-
-Selamat datang di dokumentasi Puko Framework
-
-[![Latest Stable Version](https://poser.pugx.org/puko/framework/v/stable)](https://packagist.org/packages/puko/framework)
-[![Total Downloads](https://poser.pugx.org/puko/framework/downloads)](https://packagist.org/packages/puko/framework)
 [![Build Status](https://travis-ci.org/Velliz/pukoframework.svg?branch=master)](https://travis-ci.org/Velliz/pukoframework)
-[![Coverage Status](https://coveralls.io/repos/github/Velliz/pukoframework/badge.svg?branch=master)](https://coveralls.io/github/Velliz/pukoframework?branch=master)
+[![Total Downloads](https://poser.pugx.org/puko/framework/downloads)](https://packagist.org/packages/puko/framework)
+[![Latest Stable Version](https://poser.pugx.org/puko/framework/v/stable)](https://packagist.org/packages/puko/framework)
 
 Puko Framework pertama kali dibuat pada 14 Oktober 2015 sebagai Template Engine.
 Tujuan dibuatnya Puko Framework adalah untuk menyediakan kerangka berbasis PHP 

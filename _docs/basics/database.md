@@ -1,6 +1,6 @@
 ---
 title: Database
-category: basics
+category: Basics
 order: 6
 ---
 
