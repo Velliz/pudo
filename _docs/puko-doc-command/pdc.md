@@ -1,9 +1,7 @@
 ---
-layout: page
-title: "Puko Doc Command"
-category: doc
-date: 2017-07-22 14:32:39
-order: 7
+title: Puko Doc Command
+category: Puko Doc Command 
+order: 1
 ---
 
 Untuk mempercepat pembangunan aplikasi *Puko Framework* mempunyai utilitas yang penerapannya 

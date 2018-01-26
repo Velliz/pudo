@@ -1,12 +1,8 @@
 ---
-layout: page
-title: "Puko Template Engine"
-category: doc
-date: 2017-07-22 14:32:49
-order: 8
+title: Puko Template Engine
+category: Puko Template Engine
+order: 1
 ---
-
-
 
 Puko Template Engine adalah agen yang ditugas khususkan untuk mengolah tampilan. Untuk penggunaanya, Intinya kamu harus punya kelas controller yang bertipe View.
 Kemudian kamu juga harus memiliki return data array pada setiap functionnya. Untuk memudahkan, kamu bisa membuat contoh controller seperti berikut.
