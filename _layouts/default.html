@@ -70,6 +70,12 @@
 					</li>
 				</ul>
 				<ul>
+					<li class="nav-item top-level {% if page.url == '/contributing/' %}current{% endif %}">
+						{% assign contributing = site.html_pages | where: 'url', '/contributing/' | first %}
+						<a href="{{ site.baseurl }}/contributing/">{{ contributing.title }}</a>
+					</li>
+				</ul>
+				<ul>
 					<li class="nav-item top-level {% if page.url == '/license/' %}current{% endif %}">
 						{% assign license = site.html_pages | where: 'url', '/license/' | first %}
 						<a href="{{ site.baseurl }}/license/">{{ license.title }}</a>

@@ -1,6 +1,5 @@
 ---
-title: release
-type: major
+title: Release
 ---
 
 **The 0.x.x version is not released because it's not production ready**

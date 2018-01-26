@@ -1,6 +1,5 @@
 ---
 title: Contributing
-type: major
 ---
 
 Puko Framework is originaly known as a simple template engine. 
