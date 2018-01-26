@@ -1,5 +1,5 @@
 ---
-title: Release
+title: Changelog
 ---
 
 **The 0.x.x version is not released because it's not production ready**
