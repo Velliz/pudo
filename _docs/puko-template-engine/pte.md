@@ -9,18 +9,18 @@ Semua tag yang bisa digunakan terangkum pada tabel berikut.
 
 | Tags | Description |
 | --- | --- |
-| `{!x}` | tag untuk mencetak nilai atau **Elements** |
-| `<!--{!x}-->` | **open** looping tag |
-| `<!--{/x}-->` | **close** looping tag |
-| `{!fn()}` | **function** tag tanpa parameter |
-| `{!fn(x)}` | **function** tag dengan satu parameter |
-| `{!fn(x,y,z)}` | **function** tag dengan banyak parameters |
-| `{CONTENT}` | **CONTENT** tag hanya dikenali dalam master *file* |
-| `{!css(<link href="" rel="stylesheet" type="text/css" />)}` | **CSS** tag |
-| `{!js(<script src="" type="text/javascript"></script>)}` | **JavaScript** tag |
-| `{!part(css)}` | memindahkan **CSS** tag ke lokasi ini |
-| `{!part(js)}` | memindahkan **JavaScript** tag ke lokasi ini |
-| `{x.html}` | tag untuk segment file |
+| {!x} | tag untuk mencetak nilai atau **Elements** |
+| <!--{!x}--> | **open** looping tag |
+| <!--{/x}--> | **close** looping tag |
+| {!fn()} | **function** tag tanpa parameter |
+| {!fn(x)} | **function** tag dengan satu parameter |
+| {!fn(x,y,z)} | **function** tag dengan banyak parameters |
+| {CONTENT} | **CONTENT** tag hanya dikenali dalam master *file* |
+| {!css(<link href="" rel="stylesheet" type="text/css" />)} | **CSS** tag |
+| {!js(<script src="" type="text/javascript"></script>)} | **JavaScript** tag |
+| {!part(css)} | memindahkan **CSS** tag ke lokasi ini |
+| {!part(js)} | memindahkan **JavaScript** tag ke lokasi ini |
+| {x.html} | tag untuk segment file |
 
 > Perhatian: **Elements** dapat anda lihat secara lengkap pada sesi tutorial **Elements**.
 
