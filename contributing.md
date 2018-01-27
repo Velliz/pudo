@@ -56,7 +56,7 @@ If you want to contribute to provide sample app. Get the projects from this [lin
 
 ### Framework logo
 
-![](touch-icon.png)
+![puko](https://velliz.github.io/pudo/touch-icon.png)
 
 If you want to make the logo better you can contribute to by post [issues](https://github.com/Velliz/pukoframework/issues) 
 about the logo.

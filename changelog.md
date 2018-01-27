@@ -2,8 +2,6 @@
 title: Changelog
 ---
 
-*The 0xx version is not released because it's not production ready*
-
 0.1.0-beta (14 October 2015)
 * Creating Puko Template Engine (PTE)
 
