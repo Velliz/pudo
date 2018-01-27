@@ -4,60 +4,93 @@ category: Basics
 order: 4
 ---
 
+View pada *Puko* diatur dengan sistem master dan content, master terletak di dalam folder *assets/master* 
+sedangkan content lokasinya mengikuti tata letak controller yang *file*-nya sudah otomatis di buat saat *Scaffolding* Routes.
+Secara *default* ketika anda memulai sebuah proyek baru dengan *Puko*. 
+Anda akan memiliki satu buah file bernama master.html yang berfungsi sebagai awal dengan struktur *file* berikut ini.
 
-Melanjutkan dokumentasi dari controller dasar. Kali ini mari kita bahas tentang controller yang menjadi View.
-Singkatnya, jika kamu mempunyai.
-
-```php
-namespace controller;
-
-use pukoframework\pte\View;
-
-class yourclass extends View {
-    
-    public function yourmethod(){}
-    ...
-}
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{!title}</title>
+</head>
+<body>
+<div>
+{CONTENT}
+</div>
+{!part(css)}
+{!part(js)}
+</body>
+</html>
 ```
 
-maka kamu wajib menyertakan file .html sebagai pendamping controller kamu.
+Jika diperhatikan, maka anda akan menemukan tag dengan dua jenis kerangka, {!} dan {CONTENT}.
+
+```text
+{CONTENT}
+```
+
+CONTENT berfungsi sebagai pewadah tempat diletakannya content html nantinya.
+
+```text
+{!part(css)}
+{!part(js)}
+```
+
+part() berfungsi sebagai pewadah tempat diletakannya assets.
+
+Anda juga dapat membuat beberapa *file* master selain master.html
+
+```text
+master.html
+master-admin.html
+master-guest.html
+master-siswa.html
+```
+
+Selain master, terdapat juga content yang seperti disinggung diawal, 
+lokasinya mengikuti tata letak controller yang *file*-nya sudah otomatis di buat saat *Scaffolding* Routes.
+Jadi, jika anda membuat routes dengan format berikut.
+
+```text
+php puko routes view add akun/tautan
+
+controller     : akun\user
+function       : profile
+accept         : GET,POST
+```
+
+Maka anda akan menemukan file content anda pada direktori berikut.
 
 ```text
 - assets/
   - html/
     - id/
-      - yourclass/
-        - master.html
-        - yourmethod.html
+      - akun/
+        - user/
+          - profile.html
 ```
 
-Jadi, setiap kelas **yourclass** kamu wajib memiliki sebuah file bernama **master.html** sebagai induk layout.
-Jadi kamu TIDAK BOLEH membuat function atau nama method dengan nama **master**. 
-Berikut contoh dari file master.html
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{!PageTitle}</title>
-</head>
-<body>
-    {CONTENT}
-</body>
+```text
+- controller/
+  - akun/
+    - user.php
 ```
 
-dimana nantinya yourmethod.html akan berada pada **{CONTENT}**.
-Kemudian kita juga memiliki tag bernama {!PageTitle}. 
-Kita bisa mengisi nilai dari {!PageTitle} tersebut dengan menambahkan **return** data berjenis **array()**
-pada method atau function seperti
+Untuk mengatur master apa yang hendak digunakan pada sebuah content, anda dapat mengaturnya melalui controller.
 
 ```php
-public function yourmethod()
-{
-    return array('PageTitle' => 'Puko Framework');
-}   
+/**
+ * #Master master-siswa.html
+ */
+class user extends View {
+    
+    public function profile() {
+    
+    }
+}
 ```
 
-nah, jika kamu membuka halaman web-nya sekarang maka {!PageTitle} sudah memiliki nilai **Puko Framework** 
-Intinya, jika kamu ingin mengirim data untuk halaman .html kamu perlu melakukan **return** data bertipe array pada akhir function kamu.
-Untuk lebih jelasnya mengenai template dan data silahkan membaca bagian dokumentasi Puko Template Engine (PTE).
+> Perhatian: jika anda tidak mendefinisikan #Master master-siswa.html maka secara otomatis controller akan mencari master default yaitu master.html

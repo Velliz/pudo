@@ -4,69 +4,88 @@ category: Basics
 order: 3
 ---
 
-Untuk dapat menggunakan database kamu harus menyiapkan konfigurasi terlebih dahulu yang dapat kamu temukan pada **config/database.php**
-Kamu bisa menyesuaikannya dengan pengaturan masing-masing komputer yang digunakan.
+Untuk dapat menggunakan model, anda harus terlebih dahulu memiliki *base model* yang disediakan dalam *Scaffolding*.
+Sintaks berikut dapat anda jalankan untuk membuat sebuah model.
 
-```php
-return array(
-    'dbType' => 'mysql',
-    'host' => 'localhost',
-    'user' => 'root',
-    'pass' => '',
-    'dbName' => '',
-    'port' => 3306
-);
+```text
+php puko setup db
 ```
 
-Setelah beres, kamu dapat membuat **model class** dengan cara meletakannya dalam folder bernama **model**.
-Berikut ini adalah contoh model class sederhana yang bisa kamu buat.
-Setiap kelas model wajib dinamai dengan huruf kecil semua. Kemudian model wajib menggunakan
+> Perhatian: sampai saat ini *Puko* framework baru mendukung secara penuh database MySQL & MariaDB.
 
-```php
-namespace model;
+Setelah menekan enter, anda akan dibimbing untuk melengkapi konfigurasi database dengan isian sebagai berikut.
 
-use pukoframework\pda\DBI;
+```text
+host name     : ...
 ```
 
-Kemudian, untuk melakukan operasi CRUD kamu bisa memanfaatkan kelas static bernama DBI. Contoh pengunaan DBI
+Dapat di isi dengan *Alamat IP* lokasi mesin database, secara default kita bisa mengisikan **localhost**.
 
-```php
-DBI::Prepare('member');
-DBI::Prepare('select * from member');
+```text
+host port     : ...
 ```
 
-Untuk query Insert atau Update, kamu bisa memasukan nama tabel atau memasukan query select seperti contoh diatas.
-Untuk lebih jelasnya, yuk lihat contoh sebuah kelas model dengan CRUD method didalamnya dibawah ini.
+Dapat di isi dengan *port* database, secara default kita bisa mengisikan **3306**.
+
+```text
+username      : ...
+```
+
+Dapat di isi dengan user database, secara default kita bisa mengisikan **root**.
+
+```text
+password      : ...
+```
+
+Dapat di isi dengan password database, secara default kita bisa mengosongkannya.
+
+```text
+database name : ...
+```
+
+Dapat di isi dengan nama skema database.
+
+> Perhatian: nama tabel tidak boleh diawali dengan angka serta nama tabel tidak diperbolehkan mengandung spasi.
+
+Setelah selesai, jika konfigurasi yang di masukan benar. Maka akan ada informasi model apa saja yang berhasil di buat.
+Anda bisa mengaksesnya melalui intansiasi objek sesuai dengan nama tabelnya. 
+Untuk nama tabel Mahasiswa, maka anda dapat memanggil **GetAll()** untuk mengambil keseluruhan datanya.
 
 ```php
-namespace model;
+$data['mahasiswa'] = Mahasiswa::GetAll();
+```
 
-use pukoframework\pda\DBI;
+Untuk melakukan proses simpan data, anda dapat menggunakan **Create()**.
 
-class yourdb
-{
-    public static function create($dataMember)
-    {
-        return DBI::Prepare('member')->Save($dataMember);
-    }
+```php
+$id_mahasiswa = Mahasiswa::Create(array(
+    'Nama' => 'Didit Velliz',
+    'Jurusan' => 'Informatika',
+    'IPK' => 4.00,
+    ...
+));
+```
 
-    public static function read()
-    {
-        return DBI::Prepare('select * from member')->GetData();
-    }
+Untuk melakukan proses update data, anda dapat menggunakan **Update()**.
 
-    public static function update($dataMember)
-    {
-        $whereClause = array('ID' => 1);
-        return DBI::Prepare('member')->Update($whereClause, $dataMember);
-    }
+```php
+$id_mahasiswa = Mahasiswa::Update(array('Id' => $id_mahasiswa), array(
+    'Nama' => 'Didit Velliz',
+    'Jurusan' => 'Informatika',
+    'IPK' => 4.00,
+    ...
+));
+```
 
-    public static function delete($dataMember)
-    {
-        $whereClause = array('ID' => 1);
-        return DBI::Prepare('member')->Delete($whereClause);
-    }
-}
+> Perhatian: anda dapat menggunakan petunjuk kolom lain untuk melakukan update data.
+
+```php
+$id_mahasiswa = Mahasiswa::Update(array('Jurusan' => 'Informatika'), array(
+    'Nama' => 'Didit Velliz',
+    'Jurusan' => 'Informatika',
+    'IPK' => 4.00,
+    ...
+));
 ```
 
 |Fungsi|Parameter|Parameter Kembalian|
@@ -75,32 +94,82 @@ class yourdb
 |GetData()|String query|**array** atau **null**|
 |Delete()|array|**true** atau **false**|
 
-Berikut ini contoh terinci penggunaan parameter dengan Save();
+Anda juga dapat membuat model dari turunan kelas tersebut.
 
 ```php
-public static function create()
-{
-    $dataMember = array(
-        'NIK' => '1266409',
-        'Nama' => 'Didit Velliz',
-        'Usia' => 22,
-    );
-    $hasil = DBI::Prepare('member')->Save($dataMember);
+class Perwalian extends Mahasiswa {
+```
+
+> Perhatian: semua kelas model harus diletakan di dalam folder model yang telah disediakan.
+
+Berikut ini adalah contoh lengkap model sederhana yang bisa anda buat.
+
+```php
+namespace model;
+
+use pukoframework\pda\DBI;
+
+class Perwalian extends Mahasiswa {
+
+    public static function RataRataIPK() {
+        $sql = "SELECT AVG(IPK) FROM Mahasiswa;";
+        $data = DBI::Prepare($sql)->GetData();
+        
+        return $data;
+    }
+    
+    public static function GetIPK($id_mahasiswa) {
+        $sql = "SELECT IPK FROM Mahasiswa WHERE Id = @1;";
+        $data = DBI::Prepare($sql)->FirstRow($id_mahasiswa);
+        
+        return $data;
+    }
+
+    public static function ResetIPK($id_mahasiswa) {
+        $sql = "UPDATE Mahasiswa SET IPK = 0.0 WHERE Id = @1;";
+        $data = DBI::Prepare($sql)->Run($id_mahasiswa);
+        
+        return $data;
+    }        
 }
 ```
 
-Berikut ini contoh terinci penggunaan parameter dengan Update();
+Jika membuat turunan model, anda dapat memanfaatkan kelas static bernama DBI untuk melakukan manipulasi data. 
+Contoh pengunaan DBI dapat anda lihat pada contoh lengkap model di atas yang menggunakan tiga cara pemakaian DBI.
 
 ```php
-public static function update()
-{
-    $dataMember = array(
-        'ID' => 1,
-        'NIK' => '1266409',
-        'Nama' => 'Didit Velliz',
-        'Usia' => 22,
-    );
-    $whereClause = array('ID' => 1);
-    $hasil = DBI::Prepare('member')->Update($whereClause, $dataMember);
-}
+DBI::Prepare($sql)->GetData();
+```
+
+**GetData()** digunakan untuk mengambil keseluruhan data dari query yang dijalankan. Data yang dikembalikan berupa array berindeks.
+Selain itu, kita juga bisa menyisipkan parameter secara bebas melalui parameter masukan dari **GetData()** itu sendiri sesuai dengan
+jumlah parameter yang di definisikan di dalam query.
+
+```php
+$sql = "SELECT * FROM Mahasiswa WHERE Id = @1;";
+DBI::Prepare($sql)->GetData($Id);
+```
+
+```php
+$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 AND IPK = @2;";
+DBI::Prepare($sql)->GetData($Id, $IPK);
+```
+
+```php
+$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 AND IPK = @2 AND Jurusan = @3;";
+DBI::Prepare($sql)->GetData($Id, $IPK, $Jurusan);
+```
+
+Terdapat juga penggunaan **FirstRow()** untuk mengambil hanya baris pertama saja dari data terpilih dengan kembalian berupa array tak berindeks.
+
+```php
+$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 LIMIT 1;";
+DBI::Prepare($sql)->FirstRow();
+```
+
+Terdapat juga penggunaan **Run()** untuk mengirim query saja. Biasanya digunakan untuk eksekusi stored procedure dan *query sql* selain *select*.
+
+```php
+$sql = "UPDATE Mahasiswa SET IPK = 0.0 WHERE Id = @1;";
+DBI::Prepare($sql)->Run();
 ```
