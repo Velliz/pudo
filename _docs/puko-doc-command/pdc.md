@@ -4,6 +4,8 @@ category: Puko Doc Command
 order: 1
 ---
 
+> Bahaya: fitur ini hanya cocok dengan Puko versi lawas <= 1.0.3
+
 Untuk mempercepat pembangunan aplikasi *Puko Framework* mempunyai utilitas yang penerapannya 
 dilakukan dengan menulis komentar pada file **controller** komentar seperti misalnya pada kelas
 

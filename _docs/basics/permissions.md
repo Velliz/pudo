@@ -1,8 +1,10 @@
 ---
 title: Permissions
 category: Basics
-order: 8
+order: 7
 ---
+
+> Bahaya: fitur ini belum sepenuhnya direkomendasikan untuk implementasi di website untuk production
 
 Untuk mengimplementasikan permission pertama lakukan login.
 

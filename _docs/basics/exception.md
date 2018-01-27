@@ -1,7 +1,7 @@
 ---
 title: Exception Handling
 category: Basics
-order: 10
+order: 9
 ---
 
 Untuk mengatasi error. Kita perlu mengkategorikan error yang terjadi. Misalkan error karena kesalahan pengetikan URL.

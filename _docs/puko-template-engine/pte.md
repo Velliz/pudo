@@ -4,6 +4,8 @@ category: Puko Template Engine
 order: 1
 ---
 
+> Bahaya: fitur ini hanya cocok dengan Puko versi lawas <= 1.0.3
+
 Puko Template Engine adalah agen yang ditugas khususkan untuk mengolah tampilan. Untuk penggunaanya, Intinya kamu harus punya kelas controller yang bertipe View.
 Kemudian kamu juga harus memiliki return data array pada setiap functionnya. Untuk memudahkan, kamu bisa membuat contoh controller seperti berikut.
 

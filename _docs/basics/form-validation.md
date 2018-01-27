@@ -1,7 +1,7 @@
 ---
 title: Form Validation
 category: Basics
-order: 9
+order: 8
 ---
 
 Langkah-langkah untuk Validasi form POST cukup mudah.

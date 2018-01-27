@@ -1,10 +1,10 @@
 ---
-title: DataTable Server Processing
+title: DataTable Class
 category: Advanced
 order: 4
 ---
 
-### PHP Guide
+PHP Guide
 
 DataTable adalah plugin jQuery yang paling populer digunakan untuk menampilkan data dalam bentuk tabel.
 Puko menyediakan fasilitas berupa kelas yang dapat menyederhanakan penggunaan DataTable terutama jika mengunakan
@@ -51,7 +51,7 @@ ditampilkan.
 
 > Perhatian: pemanggilan die() diperlukan untuk memberhentikan proses pembungkusan output lanjut pada puko framework.
 
-### JavaScript Guide
+JavaScript Guide
 
 Pastikan anda telah memiliki file yang dibutuhkan dan ter-import dengan benar kedalam file html.
 Biasanya, pada puko templating engine versi 1.1.2 keatas penamaanya seperti berikut.

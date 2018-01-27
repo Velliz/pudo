@@ -7,9 +7,9 @@ order: 1
 Cara yang paling mudah untuk memasang *Puko Framework* adalah dengan menggunakan **composer**. Anda hanya perlu menuliskan perintah:
 
 ```text
-composer create-project velliz/puko appname
+composer create-project velliz/puko ...
 ```
-pada jendela console dengan parameter **appname** yang disesuaikan dengan nama project anda.
+pada jendela console dengan parameter ... yang disesuaikan dengan nama project anda.
 
 ---
 

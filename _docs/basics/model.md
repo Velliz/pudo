@@ -173,3 +173,16 @@ Terdapat juga penggunaan **Run()** untuk mengirim query saja. Biasanya digunakan
 $sql = "UPDATE Mahasiswa SET IPK = 0.0 WHERE Id = @1;";
 DBI::Prepare($sql)->Run();
 ```
+
+Anda juga dapat melihat *file* konfigurasi yang disimpan dari proses *Scaffolding* pada *file* config/database.php dengan format file berikut.
+ 
+```php
+return array(
+    'dbType' => 'mysql',
+    'host' => 'localhost',
+    'user' => 'root',
+    'pass' => '',
+    'dbName' => '',
+    'port' => 3306
+);
+```

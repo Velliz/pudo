@@ -26,6 +26,8 @@ Anda akan memiliki satu buah file bernama master.html yang berfungsi sebagai awa
 </html>
 ```
 
+> Perhatian: tag dapat anda lihat secara lengkap pada sesi tutorial **Puko Doc Command**.
+
 Jika diperhatikan, maka anda akan menemukan tag dengan dua jenis kerangka, {!} dan {CONTENT}.
 
 ```text
@@ -93,4 +95,4 @@ class user extends View {
 }
 ```
 
-> Perhatian: jika anda tidak mendefinisikan #Master master-siswa.html maka secara otomatis controller akan mencari master default yaitu master.html
+> Perhatian: jika anda tidak mendefinisikan **#Master master-siswa.html** maka secara otomatis controller akan mencari master default yaitu **master.html**

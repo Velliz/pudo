@@ -4,23 +4,19 @@ category: Basics
 order: 5
 ---
 
-Kali ini mari kita bahas tentang controller yang menjadi Service.
-Singkatnya, jika kamu mempunyai.
+Service dinyatakan ketika sebuah kelas controller menurunkan kelas Service.
 
 ```php
-namespace controller;
-
-use pukoframework\pte\Service;
-
-class yourclass extends Service {
-    
-    public function yourmethod(){}
-    ...
-}
+class nilai extends Service {
 ```
 
-nah, jika kamu membuka halaman web-nya sekarang maka kamu akan mendapatkan output file .json seperti ini.
+Perbedaanya adalah pada return data. Alih-alih mencari halaman html dan merendernya, Serive akan langsung membuat representasi data JSON dari return yang dihasilkan function.
+Namun, tentu dengan beberapa atribut tambahan yang ditambahkan secara otomatis.
 
+* time   - server execution time.
+* status - biasanya terdiri dari **success** atau **failed**.
+* data   - disini data dari return function terletak.
+* token  - adalah data tambahan yang berfungsi untukperlindungan dari serangan CSRF.
 ```json
 {
   "time": 0.0010089874267578,
@@ -31,15 +27,10 @@ nah, jika kamu membuka halaman web-nya sekarang maka kamu akan mendapatkan outpu
 }
 ```
 
-Perlu diketahui bahwa service akan selalu mengembalikan data bernama *time* dan *token*.
-*Time* mengukur seberapa lama data diolah oleh server.
-*Token* dapat digunakan untuk mengidentifikasi user yang mengakses Service.
-Untuk memunculkan data selain *token*, tambahkan data dengan menggunakan return pada akhir function. 
-Contoh.
+Contoh, jika anda mempunyai controller dengan return function berikut.
 
 ```php
-public function yourmethod()
-{
+public function siswa() {
     return array(
         'NIK' => '1266409',
         'Nama' => 'Didit Velliz',
@@ -51,7 +42,7 @@ public function yourmethod()
 }
 ```
 
-Maka pada bagian data array akan muncul bersama dengan *token*.
+Maka json yang dihasilkan ketika halaman tersebut di buka adalah.
 
 ```json
 {
@@ -69,5 +60,3 @@ Maka pada bagian data array akan muncul bersama dengan *token*.
   }
 }
 ```
-
-Selamat! kamu sudah bisa menggunakan output data tersebut untuk keperluan AJAX, Web Service sdb.
