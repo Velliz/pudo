@@ -8,7 +8,7 @@ order: 4
 
 DataTable adalah plugin jQuery yang paling populer digunakan untuk menampilkan data dalam bentuk tabel.
 Puko menyediakan fasilitas berupa kelas yang dapat menyederhanakan penggunaan DataTable terutama jika mengunakan
-fasilitas Server Processing. Buat objek dari kelas DataTable dengan sintak berikut.
+fasilitas Server Processing. Untuk memulai, buat objek dari kelas DataTable dengan sintak berikut.
 
 ```php
 $table = new DataTables();
@@ -45,7 +45,7 @@ echo $data->GetDataTables(function ($result) {
 die();
 ```
 
-Perlu diperhatikan bahwa fungsi **GetDataTables** menggunakan *callbacks* berupa function.
+Perlu diperhatikan bahwa fungsi **GetDataTables** menggunakan *callbacks* berupa *function* anonim.
 Fitur ini berguna jika seandainya anda ingin melakukan transformasi data sebelum data hasil *select*
 ditampilkan.
 
@@ -111,3 +111,6 @@ $('#table-printed').DataTable({
 ```
 
 > Perhatian: jumlah *orderable* dalam *columns* harus sama dengan *SetColumnSpec* pada kode PHP.
+
+Untuk saat ini, anda hanya bisa melakukan pemanggilan $.ajax() dengan metode GET.
+Penggunaan lebih lanjut akan ditambahkan saat basis kode framework diperbarui.
