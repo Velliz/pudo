@@ -10,8 +10,8 @@ Semua tag yang bisa digunakan terangkum pada tabel berikut.
 | Tags | Description |
 | --- | --- |
 | {!x} | tag untuk mencetak nilai atau **Elements** |
-| <!--{!x}--> | **open** looping tag |
-| <!--{/x}--> | **close** looping tag |
+| `<!--{!x}-->` | **open** looping tag |
+| `<!--{/x}-->` | **close** looping tag |
 | {!fn()} | **function** tag tanpa parameter |
 | {!fn(x)} | **function** tag dengan satu parameter |
 | {!fn(x,y,z)} | **function** tag dengan banyak parameters |
