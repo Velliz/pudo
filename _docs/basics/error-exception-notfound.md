@@ -33,10 +33,10 @@ Selain itu, anda juga dapat mengatur beberapa halaman error dari sistem internal
 Halaman ini dibuka ketika sebuah Exception terjadi. Anda tidak bisa membuat halamannya karena diatur oleh *Puko* secara internal.
 Namun, anda bisa mengaplikasikan css atau mengubah struktur halamannya melalui *file* berikut.
 
-```html
-assets/
-  systems/
-    exception.html
+```text
+- assets/
+  - systems/
+    - exception.html
 ```
 
 **Not Authenticated**
@@ -44,10 +44,10 @@ assets/
 Halaman ini dibuka ketika user yang tidak login mencoba membuka halaman yang dilindungi. Anda tidak bisa membuat halamannya karena diatur oleh *Puko* secara internal.
 Namun, anda bisa mengaplikasikan css atau mengubah struktur halamannya melalui *file* berikut.
 
-```html
-assets/
-  systems/
-    auth.html
+```text
+- assets/
+  - systems/
+    - auth.html
 ```
 
 **Not Authorized**
@@ -55,8 +55,8 @@ assets/
 Halaman ini dibuka ketika user yang login tidak memiliki cukup role. Anda tidak bisa membuat halamannya karena diatur oleh *Puko* secara internal.
 Namun, anda bisa mengaplikasikan css atau mengubah struktur halamannya melalui *file* berikut.
 
-```html
-assets/
-  systems/
-    permission.html
+```text
+- assets/
+  - systems/
+    - permission.html
 ```
