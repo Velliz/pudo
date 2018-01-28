@@ -52,4 +52,4 @@ DBI::Prepare('tabel')->Update($where, $data, true);
 Parameter *true* digunakan jika anda tidak menggunakan file_get_contents().
 Bila menggunakan file_get_contents() anda harus merubahnya menjadi *false*.
 
-> Perhatian: penjelasan penggunaan **DBI** dapat anda lihat secara lengkap pada sesi tutorial **Database**.
+> Perhatian: penjelasan penggunaan **DBI** dapat anda lihat secara lengkap pada sesi tutorial **Model**.

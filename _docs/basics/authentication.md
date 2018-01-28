@@ -4,122 +4,112 @@ category: Basics
 order: 6
 ---
 
-Login, Logout dan Session pada Puko Framework dapat diatur dari controller. cara menggunakannya adalah dengan mengimplementasikan interface bernama **Auth**.
-Jika kamu mengimplementasikan interface ini, otomatis wajib mengimplementasikan / override tiga buah method bernama 
+*Authentication* pada Puko Framework dapat dibuat lewat *Scaffolding*. 
 
-* public function Login($username, $password)
-* public function Logout()
-* public function GetLoginData($id)
-
-contohnya seperti ini:
-
-```php
-namespace controller;
-
-use pukoframework\auth\Auth;
-use pukoframework\auth\Session;
-use pukoframework\pda\DBI;
-use pukoframework\pte\View;
-use pukoframework\Request;
-
-class member extends View implements Auth
-{
-    #region auth
-    public function Login($username, $password)
-    {
-        
-    }
-
-    public function Logout()
-    {
-
-    }
-
-    public function GetLoginData($id)
-    {
-        
-    }
-    #end region auth
-}
+```text
+php puko setup base_auth ...
 ```
 
-#### **Login**
+Dengan parameter ... yang bisa anda isi sesuai dengan nama kelas yang anda inginkan. 
+Anda juga bisa membuat beberapa jenis *Authentication* seperti berikut.
 
-Untuk keperluan login, kamu bisa menuliskan logika login dalam fungsi **Login($username, $password)**
-Misalnya select data dari database. contohnya seperti ini
+```text
+php puko setup base_auth SiswaAuth
+```
+
+```text
+php puko setup base_auth DosenAuth
+```
+
+```text
+php puko setup base_auth JurusanAuth
+```
+
+Sebuah *file class* akan otomatis dibuat sesuai dengan nama yang diisikan. Anda bisa melihatnya pada direktori.
+
+```text
+```text
+- plugins/
+  - auth/
+    - SiswaAuth.php
+```
+
+Jika *file* tersebut dibuka, maka akan terlihat tiga fungsi ini menunggu untuk dilengkapi.
 
 ```php
 public function Login($username, $password)
 {
-    $loginResult = Database::GetUser($username, md5($password))[0];
-    // return data yang akan disimpan di session selama login
-    return $loginResult['ID'];
+    //todo: your custom login code here
+}
+
+public function Logout()
+{
+    //todo: create or clear log in databases
+}
+
+public function GetLoginData($id)
+{
+    //todo: return your user data here
 }
 ```
 
-kemudian menjalankan function Login kamu melalui function lain misal pada 'main'
+**Login($username, $password)**
+
+Untuk implementasi login, anda bisa menuliskan logika login dalam fungsi ini.
+Misalnya melakukan *select* data dari database seperti contoh berikut.
 
 ```php
-Session::Get($this)->Login($username, md5($password), Auth::EXPIRED_1_WEEK)
+public function Login($username, $password)
+{
+    $siswa = SiswaModel::GetByUsernamePassword($username, md5($password));
+    return $siswa['ID'];
+}
 ```
 
-untuk parameter ketiga yaitu **Auth** terdapat beberapa pilihan untuk menentukan lamanya login yaitu:
+> Perhatian: Login wajib melakukan return ID atau *single value* lain sebagai patokan data yang akan disimpan oleh framework ke dalam COOKIES. 
 
-|EXPIRED_ON_CLOSE|
+Kemudian, anda dapat menjalankan *function* Login pada controller seperti contoh berikut.
+
+```php
+$login = Session::Get(SiswaAuth::Instance())->Login($username, $password, Auth::EXPIRED_1_WEEK);
+```
+
+**SiswaAuth::Instance()** merupakan pemagilan objek dari kelas yang telah kita modifikasi kode loginnya.
+ 
+**Auth::EXPIRED_1_WEEK** Adalah *static value* yang dapat digunakan untuk menentukan lamanya login.
+Terdapat beberapa *static value* lain yaitu.
+
 |EXPIRED_1_HOUR|
 |EXPIRED_1_DAY|
 |EXPIRED_1_WEEK|
 |EXPIRED_1_MONTH|
 
-Contoh
+Jika login berhasil, maka variabel **$login** akan bernilai *true*. Jika gagal variabel **$login** akan bernilai *false*.
 
-```php
-public function main()
-{
-    if (Request::IsPost()) {
-        $username = Request::Post('username', null);
-        if ($username == null) throw new \Exception('PIC/Username must filled');
-        $password = Request::Post('password', null);
-        if ($password == null) throw new \Exception('Password must filled');
-        if (Session::Get($this)->Login($username, md5($password), Auth::EXPIRED_1_MONTH)) {
-            //login berhasil
-            return;
-        }
-        throw new \Exception('Username or password not exists.');
-    }
-}
-```
+**Logout()**
 
-Jika login berhasil, Puko Framework akan membuat sebuah COOKIE bernama puko.
-
-#### **Logout**
-
-Sedangkan untuk logout, kamu bisa menuliskan juga kode apa yang akan dijalankan sebelum user tersebut logout.
-Misalnya menghapus cookies dan sebagainya. contohnya seperti ini
+Anda bisa menuliskan kode apa yang akan dijalankan sebelum user melakukan logout.
+Misalnya membuat log dan sebagainya dengan contoh sebagai berikut.
                                            
 ```php
 public function Logout()
 {
-   unset($_COOKIE['cart']);
+    $date = new DateTime();
+    SiswaModel::LogoutStamps($date->format('Y-m-d H:i:s'));
 }
 ```
 
-#### **Get Login Data**
+**GetLoginData($id)**
 
-Untuk mengambil data yang telah di return dari fungsi login kamu bisa menggunakan public **function GetLoginData($id)**
-dimana $id adalah parameter berisi data yang di-return pada fungsi Login.
-Pada contoh diatas kita hanya menyimpan ID dari user yang berhasil login. 
-Sehingga untuk mendapatkan data user lain selain ID maka kita harus menambahkan kodenya.
+Untuk mengambil kembali data yang telah di *return* dari fungsi login kamu bisa menggunakan *function* ini.
+parameter masukan *$id* adalah nilai yang di *return* dari fungsi Login.
+
+Pada contoh di atas kita menyimpan ID dari user siswa yang berhasil login. 
+Sehingga untuk mendapatkan data user siswa yang lengkap, maka kita bisa melakukan panggilan *model* seperti contoh berikut.
  
 ```php
 public function GetLoginData($id)
 {
-    return DBAnywhere::GetUserById($id)[0];
+    return SiswaModel::GetUserById($id);
 }
 ```
-
-#### **Session**
-
-Sessions pada puko terbuat secara otomatis ketika function Login mengembalikan data yang juga tersimpan sebagai session value.
-Pada cookie browser dapat dilihat dengan nama puko dan nilainya terenkripsi.
-Disarankan untuk tidak menyimpan data kurang dari 16 kb kedalam session karena kapasitas cookie yang terbatas.

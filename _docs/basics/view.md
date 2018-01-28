@@ -26,7 +26,7 @@ Anda akan memiliki satu buah file bernama master.html yang berfungsi sebagai awa
 </html>
 ```
 
-> Perhatian: tag dapat anda lihat secara lengkap pada sesi tutorial **Puko Doc Command**.
+> Perhatian: tag dapat anda lihat secara lengkap pada sesi tutorial **Puko Template Engine**.
 
 Jika diperhatikan, maka anda akan menemukan tag dengan dua jenis kerangka, {!} dan {CONTENT}.
 

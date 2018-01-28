@@ -1,12 +1,12 @@
 ---
-title: Permissions
+title: Roles
 category: Basics
 order: 7
 ---
 
 > Bahaya: fitur ini belum sepenuhnya direkomendasikan untuk implementasi di website untuk production
 
-Untuk mengimplementasikan permission pertama lakukan login.
+Untuk mengimplementasikan role pertama lakukan login.
 
 ```php
 Session::Get($this)->Login('didit', 'didit', Auth::EXPIRED_1_DAY);

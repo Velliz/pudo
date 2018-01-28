@@ -10,13 +10,14 @@ Service dinyatakan ketika sebuah kelas controller menurunkan kelas Service.
 class nilai extends Service {
 ```
 
-Perbedaanya adalah pada return data. Alih-alih mencari halaman html dan merendernya, Serive akan langsung membuat representasi data JSON dari return yang dihasilkan function.
+Perbedaanya adalah pada return data. Alih-alih mencari halaman html dan merendernya, Serive akan langsung membuat representasi data JSON dari return yang dihasilkan *function*.
 Namun, tentu dengan beberapa atribut tambahan yang ditambahkan secara otomatis.
 
 * time   - server execution time.
 * status - biasanya terdiri dari **success** atau **failed**.
 * data   - disini data dari return function terletak.
-* token  - adalah data tambahan yang berfungsi untukperlindungan dari serangan CSRF.
+* token  - data tambahan yang berfungsi untuk perlindungan dari CSRF.
+
 ```json
 {
   "time": 0.0010089874267578,
