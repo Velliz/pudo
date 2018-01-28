@@ -33,9 +33,9 @@ Berikut ini adalah tabel lengkap daftar *command* yang tersedia.
 |#Template|html|true/false|Opsi untuk mengeluarkan html file pada browser|
 |#Template|cache|true/false|Opsi untuk melakukan cache pada file html|
 |#Date|before/after|d-m-Y H:i:s|Opsi untuk pengaksesan **function** Jadi kalau waktu server diluar waktu yang ditentukan maka **function** tidak dapat diakses|
-|#ClearOutput|value|true/false|Opsi untuk membersihkan semua tag value kosong. true untuk membersihkan, false untuk tetap menampilkannya|
-|#ClearOutput|block|true/false|Opsi untuk membersihkan semua tag looping kosong. true untuk membersihkan, false untuk tetap menampilkannya|
-|#ClearOutput|comment|true/false|Opsi untuk membersihkan semua tag komentar. true untuk membersihkan, false untuk tetap menampilkannya|
+|~~#ClearOutput~~|~~value~~|~~true/false~~|~~Opsi untuk membersihkan semua tag value kosong. true untuk membersihkan, false untuk tetap menampilkannya~~|
+|~~#ClearOutput~~|~~block~~|~~true/false~~|~~Opsi untuk membersihkan semua tag looping kosong. true untuk membersihkan, false untuk tetap menampilkannya~~|
+|~~#ClearOutput~~|~~comment~~|~~true/false~~|~~Opsi untuk membersihkan semua tag komentar. true untuk membersihkan, false untuk tetap menampilkannya~~|
 |#Auth|true/false|+|Opsi untuk pengaksesan fungsi. true untuk mengijinkan yang sudah login saja, false untuk mengijinkan semua|
 |#Master|-|master.html|Mengunakan custom file untuk master layout|
 |#DisplayException|-|true/false|Meneruskan proses ke *View* / *Service* saat terjadi exception|

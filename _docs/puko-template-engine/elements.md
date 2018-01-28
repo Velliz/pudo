@@ -4,9 +4,7 @@ category: Puko Template Engine
 order: 2
 ---
 
-Coming Soon
-
-Element adalah sebuah *feature set* dari puko template engine yang dapat berdiri sendiri, di lepas pasang, serta dipakai ulang.
+Element adalah sebuah *feature set* dari puko template engine yang dapat berdiri sendiri, dapat di lepas pasang, serta dipakai ulang.
 Element sendiri terdiri dari satu paket file template *html*, *JavaScript* dan kelas PHP untuk mengatur logic dari element tersebut.
 
 Untuk mengunduh set Element, anda bisa menggunakan *command* berikut.
@@ -25,7 +23,7 @@ php puko element add ...
 
 Anda bisa menamainya bebas sesuai dengan keinginan anda.
 
-> Perhatian: penamaan emement tidak boleh menggunakan spasi atau angka di depan.
+> Perhatian: penamaan element tidak boleh menggunakan spasi atau angka di depan.
 
 Setelah sebuah element terbentuk atau didownload, maka element akan tersimpan pada direktori.
 
