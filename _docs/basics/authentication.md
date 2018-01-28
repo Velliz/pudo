@@ -113,3 +113,12 @@ public function GetLoginData($id)
     return SiswaModel::GetUserById($id);
 }
 ```
+
+Jika login telah berhasil, anda dapat melindungi *function* yang ada dengan *command* berikut.
+```php
+/**
+ * #Auth true +
+ */
+```
+
+> Perhatian: tanda + menandakan semua role diijinkan untuk mengakses fungsi tersebut.

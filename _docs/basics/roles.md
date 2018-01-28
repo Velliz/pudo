@@ -4,41 +4,55 @@ category: Basics
 order: 7
 ---
 
-> Bahaya: fitur ini belum sepenuhnya direkomendasikan untuk implementasi di website untuk production
+Untuk mengimplementasikan role, anda perlu memodifikasi kode login seperti contoh berikut.
 
-Untuk mengimplementasikan role pertama lakukan login.
-
-```php
-Session::Get($this)->Login('didit', 'didit', Auth::EXPIRED_1_DAY);
-```
-
-Kemudian set permission pada proses login.
 ```php
 public function Login($username, $password)
 {
-    Session::Get($this)->SetPermission(array('ADMIN', 'USER'));
-    return true;
+    $siswa = SiswaModel::GetByUsernamePassword($username, md5($password));
+    
+    Session::Get($this)->SetPermission(array(
+        'SISWA', 'ALUMNI'
+    ));
+    
+    return $siswa['ID'];
 }
 ```
 
-Setelah itu bungkus function yang dilindungi dengan PDC.
-```php
-/**
- * #Value title HELLO
- * #Auth true ADMIN USER
- */
-public function profile()
-{
-}
-```
+**Session::Get($this)->SetPermission()** digunakan untuk menandakan role apa saja yang diperbolehkan oleh user yang sudah login.
 
-Jika hanya menggunakan authentikasi tanpa permission maka bisa ditulis seperti ini.
+Jika role telah ditetapkan, anda dapat menggunakannya dengan mengganti tanda + dengan role yang dimaksudkan.
+
 ```php
 /**
- * #Value title HELLO
  * #Auth true +
  */
-public function profile()
-{
-}
+public function profile() {
+```
+
+Dirubah menjadi seperti ini jika ingin mengijinkan siswa saja.
+
+```php
+/**
+ * #Auth true SISWA
+ */
+public function profile() {
+```
+
+Dirubah menjadi seperti ini jika ingin mengijinkan alumni saja.
+
+```php
+/**
+ * #Auth true ALUMNI
+ */
+public function profile() {
+```
+
+Dirubah menjadi seperti ini jika ingin mengijinkan siswa yang statusnya sudah alumni saja.
+
+```php
+/**
+ * #Auth true SISWA ALUMNI
+ */
+public function profile() {
 ```
