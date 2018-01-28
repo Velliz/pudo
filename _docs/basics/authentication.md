@@ -28,7 +28,6 @@ php puko setup base_auth JurusanAuth
 Sebuah *file class* akan otomatis dibuat sesuai dengan nama yang diisikan. Anda bisa melihatnya pada direktori.
 
 ```text
-```text
 - plugins/
   - auth/
     - SiswaAuth.php

@@ -1,16 +1,30 @@
 ---
-title: Form Validation
+title: Form dan Validasi
 category: Basics
 order: 8
 ---
 
-Langkah-langkah untuk Validasi form POST cukup mudah.
-Pertama yang harus kamu lakukan adalah membuat form dengan ketentuan.
+**Form HTML**
 
-* harus memiliki input type hidden bernama token ber value **{!token}**
-* harus memiliki input atau button type submit bernama **_submit**
+Form adalah salah satu cara yang umum digunakan untuk mengirim data dari user ke aplikasi web.
+Pada *Puko* form memiliki dua rekomendasi tambahan agar data dapat diproses dengan aman di controller.
+Tambahan tersebut yaitu.
 
-berikut ini contoh sebuah login form:
+```html
+<input type="hidden" name="token" value="{!token}" />
+```
+
+Dan sebuah *flag* untuk mengindikasikan form tersebut adalah *post data* dan dapat ditulis dengan dua cara.
+
+```html
+<input type="submit" name="_submit" value="kirim" />
+```
+
+```html
+<input type="hidden" name="_submit" value="_submit" />
+```
+
+Berikut ini contoh sebuah *form* login.
 
 ```html
 <div>
@@ -24,68 +38,66 @@ berikut ini contoh sebuah login form:
 </div>
 ```
 
-*action="" mengindikasikan bahwa pengiriman dilakukan ke method itu sendiri.*
+> Perhatian: **action=""** mengindikasikan bahwa pengiriman dilakukan ke alamat url diri sendiri.
 
-untuk melakukan Validasi inputan dengan puko maka kita akan melakukan pengecekan di controller
-caranya adalah dengan menangkap POST input yang dikirimkan dengan **Request::Post('name', 'default')**
-
-* *name adalah form name*
-* *default adalah nilai pengganti jika tidak diteukan nilai / null*
+Untuk melakukan pengambilan nilai, anda dapat menggunakan perntah berikut.
 
 ```php
-$username = Request::Post('username', null);
-$password = Request::Post('password', null);
-```
-
-Serta menggunakan **Request::IsPost()** untuk memastikan ke-valid-an form input dan pencegahan dari serangan CSRF (Cross Site Request Forgery)
-
-```php
-public function login()
-{
-    if (Request::IsPost()) {
-        $username = Request::Post('username', null);
-        $password = Request::Post('password', null);
-
-        if ($username == null) throw new Exception("Username harus diisi");
-        if ($password == null) throw new Exception("Password harus diisi");
-
-        //logika proses disini
-        ...
-        //redirect di akhir proses bila perlu 
-        $this->RedirectTo('login');
-    }
-    
-    //logika jika tidak ada post data disini
+if (Request::IsPost()) {
+    $username = Request::Post('username', null);
+    $password = Request::Post('password', null);
 }
-
 ```
 
-jadi singkatnya ketika kita menemukan ketidak sesuaian, kita memanggil **throw new Exception("Username harus diisi")**
-yang artinya eksekusi controller akan berhenti dan pesan **Username harus diisi** akan dilempar.
-untuk menampilkannya kamu cukup menambahkan tag Exception pada file .html kamu.
+Jika diperhatikan, sintaks **Request::Post()** mempunyai dua parameter, yaitu nama kiriman dari form dan *null* sebagai parameter kedua.
+*null* disini bertindak sebagai *default value* jika data gagal diambil dari form.
 
+Sedangkan **Request::IsPost()** berfungsi untuk mengecek nilai dari token untuk menilai apakah kiriman data sah atau berupa serangan CSRF.
+Request juga memiliki beberapa varian lain, diantaranya.
+
+```php
+Request::Get('username', null);
+```
+
+```php
+Request::Cookies('username', null);
+```
+
+```php
+Request::Vars('username', null);
+```
+
+```php
+Request::Files('username', null);
+```
+
+**Form AJAX**
+
+Pertama, anda perlu menyimpan token secara tersembunyi pada halaman html. Seperti contoh berikut.
 
 ```html
-<!--{!!Exception}-->
-    {!ExceptionMessage}
-<!--{/Exception}-->
+<input type="hidden" name="token" value="{!token}" />
 ```
 
-Kamu dapat menyisipkannya pada awal atau akhir form.
+Lalu membuat AJAX secara terpisah pada file *JavaScript*. Berikut ini contoh sebuah kerangka jQuery *AJAX*.
 
-```html
-<div>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <!--{!!Exception}-->
-        <div class="alert alert-danger">
-            <span>{!ExceptionMessage}</span>
-        </div>
-        <!--{/Exception}-->
-        <input type="hidden" name="token" value="{!token}">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        ...
-        <input type="submit" name="_submit" value="Login">
-    </form>
-</div>
+```javascript
+$.ajax({
+    url: "",
+    type: "POST",
+    data: {
+        username: $('input[name=username]').val(),    
+        password: $('input[name=password]').val(),    
+        token: $('input[name=token]').val(),    
+        _submit: 'submit'    
+    },
+    dataType: "json",
+    success: function(data) {
+        //kode tambahan jika sukses
+    }
+});
 ```
+
+**Validasi**
+
+Coming Soon

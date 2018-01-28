@@ -91,18 +91,6 @@ Perlu diperhatikan juga bahwa anda dapat membuat Routing untuk api dengan perint
 php puko routes service add ...
 ```
 
-Halaman error.
-
-```text
-php puko routes error add ...
-```
-
-Halaman not found.
-
-```text
-php puko routes not_found add ...
-```
-
 Serta perubahan pada Routing yang anda buat dengan sintaks *update* atau *delete* dengan perintah.
 
 ```text
