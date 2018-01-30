@@ -10,7 +10,7 @@ DataTable adalah plugin jQuery yang paling populer digunakan untuk menampilkan d
 Puko menyediakan fasilitas berupa kelas yang dapat menyederhanakan penggunaan DataTable terutama jika mengunakan
 fasilitas Server Processing. Untuk memulai, buat objek dari kelas DataTable dengan sintak berikut.
 
-> Perhatian: anda direkomendasikan mengunakan DataTables pad controller turunan service saja.
+> Perhatian: anda direkomendasikan mengunakan DataTables pada controller turunan service saja.
 
 ```php
 $table = new DataTables(DataTables::GET);
@@ -51,8 +51,6 @@ return $data->GetDataTables(function ($result) {
 Perlu diperhatikan bahwa fungsi **GetDataTables** menggunakan *callbacks* berupa *function* anonim.
 Fitur ini berguna jika seandainya anda ingin melakukan transformasi data sebelum data hasil *select*
 ditampilkan.
-
-> Perhatian: pemanggilan die() diperlukan untuk memberhentikan proses pembungkusan output lanjut pada puko framework.
 
 **JavaScript Guide**
 
