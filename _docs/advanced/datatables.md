@@ -14,6 +14,9 @@ fasilitas Server Processing. Untuk memulai, buat objek dari kelas DataTable deng
 
 ```php
 $table = new DataTables(DataTables::GET);
+```
+
+```php
 $table = new DataTables(DataTables::POST);
 ```
 
@@ -119,6 +122,3 @@ $('#table-printed').DataTable({
 ```
 
 > Perhatian: jumlah *orderable* dalam *columns* harus sama dengan *SetColumnSpec* pada kode PHP.
-
-Untuk saat ini, anda hanya bisa melakukan pemanggilan $.ajax() dengan metode GET.
-Penggunaan lebih lanjut akan ditambahkan saat basis kode framework diperbarui.
