@@ -10,8 +10,11 @@ DataTable adalah plugin jQuery yang paling populer digunakan untuk menampilkan d
 Puko menyediakan fasilitas berupa kelas yang dapat menyederhanakan penggunaan DataTable terutama jika mengunakan
 fasilitas Server Processing. Untuk memulai, buat objek dari kelas DataTable dengan sintak berikut.
 
+> Perhatian: anda direkomendasikan mengunakan DataTables pad controller turunan service saja.
+
 ```php
-$table = new DataTables();
+$table = new DataTables(DataTables::GET);
+$table = new DataTables(DataTables::POST);
 ```
 
 Lalu definisikan kolom anda, terutama nama kolom yang di *select* dari database.
@@ -28,21 +31,18 @@ $table->SetColumnSpec(array(
 Jika sudah, anda harus menuliskan *query sql* untuk diproses oleh kelas DataTable.
 
 ```php
-$data->SetQuery("SELECT * FROM mahasiswa");
+$data->SetQuery("SELECT * FROM mahasiswa;");
 ```
-
-> Perhatian: tidak diperkenankan menambahkan tanda ; pada akhir query karena kelas DataTable akan melakukan pembungkusan query.
 
 Lalu, anda dapat menampilkan data dengan menggunakan sintak berikut.
 
 ```php
-echo $data->GetDataTables(function ($result) {
+return $data->GetDataTables(function ($result) {
     foreach ($result as $key => $val) {
         //modify data results here
     }
     return $result;
 });
-die();
 ```
 
 Perlu diperhatikan bahwa fungsi **GetDataTables** menggunakan *callbacks* berupa *function* anonim.
@@ -88,8 +88,16 @@ $('#table-printed').DataTable({
         data: {},
         type: "GET",
         dataType: "json",
-        complete: function (evt) {
-            //kode ketika berhasil
+        dataFilter: function (data) {
+            var json = $.parseJSON(data);
+            json.draw = json.data.draw;
+            json.recordsTotal = json.data.recordsTotal;
+            json.recordsFiltered = json.data.recordsFiltered;
+            json.data = json.data.data;
+            if (json.data.error !== null) {
+                json.error = json.data.error;
+            }
+            return json.stringify(json);
         }
     },
     columns: [
