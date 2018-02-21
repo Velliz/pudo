@@ -4,7 +4,7 @@ category: Puko Object Data
 order: 1
 ---
 
-> WAING: THIS FEATURE UNDER DEVELOPMENT ON dev-master BRANCH
+> WARNING: THIS FEATURE UNDER DEVELOPMENT ON dev-master BRANCH
 
 > Coming Soon in version 1.1.3
 
@@ -18,6 +18,14 @@ $bibit->jenis_pohon = "Mangga Apel";
 $bibit->jumlah = 5;
 $bibit->ket = "Dari cangkokan super";
 $bibit->save();
+```
+
+```php
+$bibit->modify();
+```
+
+```php
+$bibit->remove();
 ```
 
 Dari potongan kode di atas kita dapat mengetahui bahwa:
