@@ -105,7 +105,7 @@ class bibit_pohon extends Model
 ```
 
 Dimana terdapat *#Table bibit_pohon* dan *#PrimaryKey id* yang menunjukan bahwa kelas tersebut terkoneksi dengan sebuah tabel di database
-dengan nama tabel **bibit_pohon** dan mempunyai primary key dengan nama kolom **id**. Saat proses scaffolding puko melakukan pembacaan struktr data hingga ke tingkat kolom.
+dengan nama tabel **bibit_pohon** dan mempunyai primary key dengan nama kolom **id**. Saat proses scaffolding puko melakukan pembacaan struktur data hingga ke tingkat kolom.
 
 Kemudian kita juga dapat memperhatikan property yang terbentuk di dalam kelas:
 
