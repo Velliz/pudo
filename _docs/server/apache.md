@@ -1,0 +1,23 @@
+---
+title: Apache
+category: Web Server
+order: 1
+---
+
+Anda dapat mengatur *clean url* dengan apache dengan konfigurasi ```.htaccess```
+berikut
+
+```text
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !(public|css)
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule  ^(.+)?$ index.php?request=$1&lang=$2 [L,QSA]
+
+</IfModule>
+```
