@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Installation
 category: Getting Started
 order: 1
 ---

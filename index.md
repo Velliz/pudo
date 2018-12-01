@@ -1,5 +1,5 @@
 ---
-title: Official Documentation
+title: Prolog
 ---
 
 [![Build Status](https://travis-ci.org/Velliz/pukoframework.svg?branch=master)](https://travis-ci.org/Velliz/pukoframework)
@@ -27,8 +27,8 @@ Puko Framework sekaligus berubah arsitektur menjadi Modular dengan menggunakan *
 
 Untuk dapat menjalankan Puko Framework dibutuhkan:
 
-- PHP >= 5.5
-- Composer (latest)
+- PHP >= 7.0
+- Composer
 
 ### Tutorial dan Kode Sampel
 
@@ -39,4 +39,4 @@ Atau melihat project yang ditenagai oleh Puko Framework yaitu:
 * [Floors](https://github.com/Velliz/floors) (Login as A Service Platform)
 * [Anywhere](https://github.com/Velliz/anywhere) (Output as A Service Platform)
 
-Terimakasih untuk meluangkan waktu mencoba Puko Framework.
+Terima kasih untuk meluangkan waktu mencoba Puko Framework.
