@@ -105,3 +105,27 @@ class Example extends Service {
 * Introduce new Exception Handler system
 * Introduce new Puko Command Line Interface (PCLI)
 * Adding Scaffolding for models
+
+1.1.1 (2 December 2017)
+* DataTables Class
+* Updated PCLI
+* Routes with {?} param
+* POST Request if array fix
+
+1.1.2 (28 February 2018)
+* Implement PTE render engine version 0.1.3
+* Better exception handle message
+
+1.1.3 (16 August 2018)
+* Micro service app model now supported
+* Fix minor http header issue on exception message occured
+* Update to PTE 0.1.4
+
+1.1.4 (4 October 2018)
+* Route function enhanced
+* Adding cache support with memcached
+* Update to PTE 0.1.5
+
+1.1.5 (22 November 2018)
+* Base route url and dir now served from factory class
+* Minor bugfix includes remove unused pdc commands
