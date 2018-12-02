@@ -66,14 +66,14 @@ class Example extends Service {
 * Adding Value, Date, User Puko Doc Command (PDC)
 * Set minimum requirement to PHP 56 for security
 
-*First release begin*
+**First release begin**
 
 0.9.4-RC (7 July 2016)
 * Customize PHP error handler
 * Optimize PDC loop tag
 * General Bugfix
 
-*Stable release begin* 
+**Stable release begin** 
 
 1.0.0 (21 October 2016)
 * Initial Release, Add license and author information
@@ -83,7 +83,7 @@ class Example extends Service {
 * Auth feature for PDC
 * ClearOutput feature for PDC
 * Session Expire Time
-* General Bugfix (Puko Framework Error on PHP 7011)
+* General Bugfix (Puko Framework Error on PHP 7.0.11)
 
 1.0.2 (12 December 2016)
 * Controller & view file group in directory
