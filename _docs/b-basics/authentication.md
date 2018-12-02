@@ -7,22 +7,22 @@ order: 6
 *Authentication* pada Puko Framework dapat dibuat lewat *Scaffolding*. 
 
 ```text
-php puko setup base_auth ...
+php puko setup auth ...
 ```
 
 Dengan parameter ... yang bisa anda isi sesuai dengan nama kelas yang anda inginkan. 
 Anda juga bisa membuat beberapa jenis *Authentication* seperti berikut.
 
 ```text
-php puko setup base_auth SiswaAuth
+php puko setup auth SiswaAuth
 ```
 
 ```text
-php puko setup base_auth DosenAuth
+php puko setup auth DosenAuth
 ```
 
 ```text
-php puko setup base_auth JurusanAuth
+php puko setup auth JurusanAuth
 ```
 
 Sebuah *file class* akan otomatis dibuat sesuai dengan nama yang diisikan. Anda bisa melihatnya pada direktori.
@@ -116,8 +116,6 @@ public function GetLoginData($id)
 Jika login telah berhasil, anda dapat melindungi *function* yang ada dengan *command* berikut.
 ```php
 /**
- * #Auth true +
+ * #Auth session true
  */
 ```
-
-> Perhatian: tanda + menandakan semua role diijinkan untuk mengakses fungsi tersebut.

@@ -1,7 +1,7 @@
 ---
 title: Nginx
 category: Web Server
-order: 2
+order: 3
 ---
 
 Anda dapat mengatur *clean url* dengan nginx dengan konfigurasi ```nginx.conf```

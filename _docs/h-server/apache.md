@@ -1,7 +1,7 @@
 ---
 title: Apache
 category: Web Server
-order: 1
+order: 2
 ---
 
 Anda dapat mengatur *clean url* dengan apache dengan konfigurasi ```.htaccess```

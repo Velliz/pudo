@@ -1,7 +1,7 @@
 ---
 title: Vagrant
 category: Web Server
-order: 3
+order: 4
 ---
 
 Template konfigurasi ```Vagrantfile```

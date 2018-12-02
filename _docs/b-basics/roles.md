@@ -25,16 +25,17 @@ Jika role telah ditetapkan, anda dapat menggunakannya dengan mengganti tanda + d
 
 ```php
 /**
- * #Auth true +
+ * #Auth session true
  */
 public function profile() {
 ```
 
-Dirubah menjadi seperti ini jika ingin mengijinkan siswa saja.
+Ditambahkan menjadi seperti ini jika ingin mengijinkan siswa saja.
 
 ```php
 /**
- * #Auth true SISWA
+ * #Auth session true
+ * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@SISWA
  */
 public function profile() {
 ```
@@ -43,16 +44,8 @@ Dirubah menjadi seperti ini jika ingin mengijinkan alumni saja.
 
 ```php
 /**
- * #Auth true ALUMNI
- */
-public function profile() {
-```
-
-Dirubah menjadi seperti ini jika ingin mengijinkan siswa yang statusnya sudah alumni saja.
-
-```php
-/**
- * #Auth true SISWA ALUMNI
+ * #Auth session true
+ * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@ALUMNI
  */
 public function profile() {
 ```
