@@ -17,7 +17,7 @@ namespace controller;
 namespace controller\akun;
 ```
 
-* Controller di *Puko* selalu turunan dari kelas **View** / **Service**.
+* Controller di *Puko* selalu turunan dari kelas **View** / **Service** / **Console**.
 
 ```php
 class member extends View {
@@ -25,6 +25,10 @@ class member extends View {
 
 ```php
 class member extends Service {
+```
+
+```php
+class member extends Console {
 ```
 
 * Controller di *Puko* hanya mengirimkan data ke **View** / **Service** melalui fitur *return* dari *function*.
@@ -42,7 +46,7 @@ public function member() {
 ```php
 /**
  * #Value Hobi Berenang
- * #Auth true +
+ * #Auth bearer true
  */
 public function member() {
     $data['Nama'] = 'Didit Velliz';

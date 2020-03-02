@@ -46,6 +46,8 @@ Untuk melanjutkan, anda bisa menekan tombol enter. Kemudian console akan meminta
 controller     : ...
 ```
 
+> pemisahan direktori controller dilakukan dengan memberikan tanda (\) _backslash_
+
 ```text
 function       : ...
 ```
@@ -53,6 +55,8 @@ function       : ...
 ```text
 accept         : ...
 ```
+
+> pemisahan beberapa _HTTP verb_ dilakukan dengan memberikan tanda (,) koma
 
 Anda dapat menuliskan dimana letak file. Contoh penulisan yang dianggap valid adalah sebagai berikut.
 
@@ -80,16 +84,24 @@ accept         : GET,POST,PUT,HEAD
 
 Opsi ini akan memerintahkan console membuat file controller user.php di dalam folder gudang yang berada didalam folder akun dan function profile secara otomatis.
 
-> Perhatian: anda diwajibkan menggunakan backslash \ untuk penamaan di rektori controller.
+> Perhatian: anda diwajibkan menggunakan (\) _backslash_ untuk penamaan di rektori controller.
 
 Karena console telah membuatkan semua halaman yang dibutuhkan termasuk file html-nya. 
 Anda dapat langsung membuka halaman yang anda buat dan melihat hasil halaman kosong berhasil di tampilkan.
 
-Perlu diperhatikan juga bahwa anda dapat membuat Routing untuk api dengan perintah.
+Anda juga dapat membuat Routing untuk api dengan perintah.
 
 ```text
 php puko routes service add ...
 ```
+
+Serta sebuah perintah console yang dapat dieksekusi lewat cli.
+
+```text
+php puko routes console add ...
+```
+
+> karena console dijalankan tanpa web server, maka _HTTP verb_ yang valid adalah default: GET
 
 Serta perubahan pada Routing yang anda buat dengan sintaks *update* atau *delete* dengan perintah.
 
@@ -110,22 +122,32 @@ php puko routes view list
 Anda juga dapat melihat semua konfigurasi yang telah dibuat oleh console tersimpan di dalam file routes.php yang berada dalam folder *config*
 
 ```php
-$data['page'] = array(
-    'profile' => array(
-            'controller' => 'akun\\user',
-            'function' => 'profile',
-            'accept' => ['GET', 'POST'],
-    )
-);
-$data['error'] = array(
-    'controller' => 'main',
-    'function' => 'error',
-    'accept' => ['GET', 'POST', 'PUT', 'HEAD']
-);
-$data['not_found'] = array(
-    'controller' => 'main',
-    'function' => 'not_found',
-    'accept' => ['GET', 'POST', 'PUT', 'HEAD']
-);
-return $data;
+$routes = [
+    "router" => [],
+    "error" => [
+        "controller" => "error",
+        "function" => "display",
+        "accept" => [
+            "GET",
+            "POST"
+        ]
+    ],
+    "not_found" => [
+        "controller" => "error",
+        "function" => "notfound",
+        "accept" => [
+            "GET",
+            "POST"
+        ]
+    ],
+    "maintenance" => [
+        "controller" => "error",
+        "function" => "maintenance",
+        "accept" => [
+            "GET",
+            "POST"
+        ]
+    ]
+];
+return $routes;
 ```
