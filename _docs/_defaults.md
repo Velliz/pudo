@@ -1,7 +1,9 @@
 ---
-title:
+title: Page Not Found
 category:
 order: 1
 ---
 
-Not found
+Sorry. Page doesn't exist!
+
+Back to [Home](/)
