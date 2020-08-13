@@ -4,16 +4,17 @@ category: Basics
 order: 1
 ---
 
-Routing pada *Puko* dilakukan secara otomatis dengan fitur bernama *Scaffolding* melalui aplikasi console / *command prompt*.
-Untuk menambahkan sebuah halaman baru dengan *output* berupa halaman html yang ditampilkan melalui browser anda dapat memasukan perintah.
+Until now, Puko framework have 3 different kind of routing clause as-is controller functionality, 
+we call it `view`, `service`, and `console`. You can see about [controller](/b-basics/controller/) to see further what that means.
+Puko can scaffolds Routing process with `pukoconsole` tools included as dev-dependency.
+
+To add Routing, you can type in _console/terminal/powershell_:
 
 ```text
-php puko routes view add ...
+php puko routes <controller_clause> add <rest_style_urls>
 ```
 
-pada bagian ... anda dapat mendefinisikan alamat halaman anda dengan aturan REST.
-Anda juga bisa menambahkan parameter sebagai segmen dengan tanda {?}.
-Berikut ini merupakan beberapa contoh alamat yang valid.
+> rest_style_urls can typed with {?} to identify it as dynamic PHP GET parameters.
 
 ```text
 php puko routes view add profile

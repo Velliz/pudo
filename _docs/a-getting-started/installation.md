@@ -4,18 +4,25 @@ category: Getting Started
 order: 1
 ---
 
-Cara yang paling mudah untuk memasang *Puko Framework* adalah dengan menggunakan **composer**. Anda hanya perlu menuliskan perintah.
+Puko framework can quickly installed with dependency required via **composer package**.
+
+You can type in _console/terminal/powershell_:
 
 ```text
-composer create-project velliz/puko ...
+composer create-project velliz/puko <project_name>
 ```
-pada jendela console dengan parameter ... yang disesuaikan dengan nama project anda.
 
-Cara lainnya, anda juga dapat mendownload file terkompresi dengan format .zip [disini](https://github.com/Velliz/puko/archive/master.zip)
-kemudian melakukan pemasangan komponen yang dibutuhkan dengan mengetikan perintah.
+> project_name must not contains space or another special character
+
+Another way to install, you can clone or download master unstable code as .zip file [here](https://github.com/Velliz/puko/archive/master.zip)
+then type in _console/terminal/powershell_ to install required dependency:
 
 ```text
 composer install
 ```
 
-Jika anda belum memiliki composer anda dapat melakukan installasi dengan mengunjungi website [getcomposer.org](https://getcomposer.org/).
+---
+
+Notes:
+
+If you don't have composer, you can download from [getcomposer.org](https://getcomposer.org/) *install instructions included there.
