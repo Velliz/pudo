@@ -32,6 +32,8 @@ Items asked:
 
 > You can also configure it manually from `config/encryption.php`
 
+---
+
 **App**
 
 App `config/app.php` used to hold read-only variable and later can retrieved in controller for usages.
@@ -78,6 +80,8 @@ Then in the puko slack section, set the active state to true.
 
 > custom hook is coming soon
 
+---
+
 **Database**
 
 Database configurations located at `config/database.php` folder. You can specify more than one connection because
@@ -105,6 +109,8 @@ Items asked:
 |Password|Paassword databases|******|
 
 > At the end wizard is asking for another connection you can answer with y/n
+
+---
 
 **Extending and customize your own config**
 
