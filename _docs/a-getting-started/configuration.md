@@ -110,6 +110,8 @@ Items asked:
 
 > At the end wizard is asking for another connection you can answer with y/n
 
+You can refer to database section for detailed information.
+
 ---
 
 **Extending and customize your own config**
@@ -140,3 +142,12 @@ $config['password'];
 $config['host'];
 $config['port'];
 ```
+
+---
+
+**Routes**
+
+Routes located in `config/routes.php` and holds all routing information.
+This file supposed as read-only because most of the puko routing done with `pukoconsole` tools included as dev-dependency.
+
+You can refer to Routing section for detailed information.

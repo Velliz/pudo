@@ -5,7 +5,7 @@ order: 1
 ---
 
 Until now, Puko framework have 3 different kind of routing clause as-is controller functionality, 
-we call it `view`, `service`, and `console`. You can see about [controller](/b-basics/controller/) to see further what that means.
+we call it `view`, `service`, and `console`. You can see about [controller](/pudo/b-basics/controller/) to see further what that means.
 Puko can scaffolds Routing process with `pukoconsole` tools included as dev-dependency.
 
 To add Routing, you can type in _console/terminal/powershell_:
