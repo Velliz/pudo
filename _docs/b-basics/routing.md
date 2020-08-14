@@ -34,60 +34,41 @@ Items asked:
 
 After completed, puko is updating and auto-generated these files:
 
-```
-assets/html/en/member/reports/pages.html
-assets/html/id/member/reports/pages.html
+```text
 config/routes.php
 controller/member/reports.php
 ```
 
+If the routes clause was `view` puko will also update and auto-generated these files:
+
+```text
+assets/html/en/member/reports/pages.html
+assets/html/id/member/reports/pages.html
+```
+
+You can also see all registered routes with this command:
+
+```text
+php puko routes list
+```
+
+> All generated routes stored in `config/routes.php`
+
+If you want to update or modify the HTTP verb accepted from the Routing url registered, 
+you can update it with command:
+
+```text
+php puko routes view update member/{?}/reports
+```
+
+Apply your revision when answering items asked.
+
 ---
 
-Serta perubahan pada Routing yang anda buat dengan sintaks *update* atau *delete* dengan perintah.
+Puko also can remove unused routes with remove command:
 
 ```text
-php puko routes service update ...
+php puko routes view remove member/{?}/reports
 ```
 
-```text
-php puko routes service delete ...
-```
-
-Anda juga dapat melihat seluruh Routes yang telah terdaftar dengan perintah.
-
-```text
-php puko routes view list
-```
-
-Anda juga dapat melihat semua konfigurasi yang telah dibuat oleh console tersimpan di dalam file routes.php yang berada dalam folder *config*
-
-```php
-$routes = [
-    "router" => [],
-    "error" => [
-        "controller" => "error",
-        "function" => "display",
-        "accept" => [
-            "GET",
-            "POST"
-        ]
-    ],
-    "not_found" => [
-        "controller" => "error",
-        "function" => "notfound",
-        "accept" => [
-            "GET",
-            "POST"
-        ]
-    ],
-    "maintenance" => [
-        "controller" => "error",
-        "function" => "maintenance",
-        "accept" => [
-            "GET",
-            "POST"
-        ]
-    ]
-];
-return $routes;
-```
+> For security concerns puko not deleting the .php and .html file. You must review and remove it manually.
