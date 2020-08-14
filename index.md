@@ -16,9 +16,9 @@ On July 7, 2016 Puko Framework re-written to support composer with autoloader st
 
 **Highlighted Features**
 
-* Puko Templating Engine (PTE)
-* Puko Docs Command (PDC)
-* Puko Command Line Interface (PCLI)
+* Puko Templating Engine `PTE`
+* Puko Docs Command `PDC`
+* Puko Command Line Interface `pukoconsole`
 
 **System Requirements**
 
@@ -33,3 +33,7 @@ Example projects using [puko framework](https://github.com/Velliz/pukoexample)
 
 * [Floors](https://github.com/Velliz/floors) (Login as A Service Platform)
 * [Anywhere](https://github.com/Velliz/anywhere) (Output as A Service Platform)
+
+---
+
+(c) 2015 - Didit Velliz

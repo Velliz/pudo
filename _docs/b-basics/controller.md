@@ -9,8 +9,6 @@ So, we can only focus on logic part of our controller.
 This section of document will describe deeper what is 'controller' 
 because in puko until now controller separated into 3 functionality `view` `service` and `console`.
 
-> You can also manually create the controller :)
-
 Theoretically web application life-cycles is divided into requests and responds.
 Also, all request by default stored by PHP in `$_POST` or `php://input` and responds back with **echo**.
 So controller in puko is doing this request and returning responds from native PHP into another experience level in very easy way.
@@ -50,6 +48,8 @@ Because it can execute commands separately from web server.
 So you don't need to worry about server limitation parameter like timeouts.
 
 > TODOC
+
+> You can also manually create the controller :)
 
 ---
 
@@ -92,12 +92,13 @@ public function member() {
 
 ```php
 /**
- * #Value Hobi Berenang
+ * #Value Hobby Swimming
  * #Auth bearer true
  */
 public function member() {
-    $data['Nama'] = 'Didit Velliz';
-    $data['Alamat'] = 'Bandung';
+    $data['Name'] = 'Didit Velliz';
+    $data['Address'] = 'Bandung';
+
     return $data;
 }
 ```
