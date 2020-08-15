@@ -222,7 +222,7 @@ $sql = "SELECT * FROM inventory WHERE (id = @1) LIMIT 1;";
 $response = DBI::Prepare($sql)->FirstRow();
 ```
 
-* Run()
+* `Run()`
 
 For executing query. Usually used for executing stored procedure and non select query.
 

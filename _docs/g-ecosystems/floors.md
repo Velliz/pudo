@@ -1,6 +1,6 @@
 ---
 title: Floors
-category: Packages
+category: Ecosystems
 order: 2
 ---
 
