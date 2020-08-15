@@ -30,7 +30,7 @@ Items asked:
 |Function name|Function name|pages|
 |Accept?|HTTP verb GET,POST,PUT,PATCH,DELETE multiple by commas|get,post|
 
-> You must using (\) _backslash_ for separating controller.
+> You must using (\\) _backslash_ for separating controller.
 
 After completed, puko is updating and auto-generated these files:
 

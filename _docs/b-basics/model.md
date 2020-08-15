@@ -82,7 +82,7 @@ Update or modify operations:
 $inventory = new plugins\model\primary\inventory(1);
 $inventory->id = $_POST['id'];
 $inventory->name = $_POST['name'];
-$inventory->created = date('Y-m-d H:i:s');
+$inventory->created = date('Y-m-d');
 $inventory->descriptions = $_POST['descriptions'];
 
 $inventory->modify();
@@ -104,9 +104,19 @@ $all = plugins\model\primary\inventory::GetAll();
 
 As you can see. Basic CRUD operations is simple and don't need to use any manual typed SQL query.
 
----
-
 > The DataBase Interface (DBI) in puko framework for now only support MySQL and MariaDB. 
+
+But then how about run the stored procedure or executing complex query like join operations?
+
+For executing stored procedure you can follow this example:
+
+```php
+DBI::Prepare('stored_procedure_name')->Run($parameter1, $parameter2);
+```
+
+For complex query you can extends the model classes.
+
+> TODOC
 
 ---
 
