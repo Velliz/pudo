@@ -111,154 +111,122 @@ But then how about run the stored procedure or executing complex query like join
 For executing stored procedure you can follow this example:
 
 ```php
-DBI::Prepare('stored_procedure_name')->Run($parameter1, $parameter2);
+DBI::Call('stored_procedure_name', [
+    $parameter1, $parameter2
+]);
 ```
 
-For complex query you can extends the model classes.
+For complex query you can extends the model classes and implement **ModelContracts** in order to have uniformity.
+Let's see by example:
 
-> TODOC
-
----
-
-**Alternative**
-
-You can also make database operation trough DBI without using `pukoconsole` command.
-We call it old way methods. The PHP class/file required must located in outer model folder.
-
-> TODOC
+Create new php file: `model/InventoryModel.php`
 
 ```php
-$data['mahasiswa'] = Mahasiswa::GetAll();
+class InventoryModel extends inventory implements ModelContracts {
 ```
 
-Untuk melakukan proses simpan data, anda dapat menggunakan **Create()**.
+The **ModelContracts** interface will be forcing you to implement 9 abstract method.
+
+`GetData()` This method should return data available on the database in array structure
+
+`GetById($id)` This method should return one row from database specified by id
+
+`IsExists($id)` This method should return true if row found or false if not found from database specified by id
+
+`IsExistsWhere($column, $value)` This method should return true if row found or false if not found from database specified by custom selection
+
+`GetDataSize()` This method should return count of the data on the database
+
+`GetDataSizeWhere($condition)` This method should return count of the data on the database with selected conditions
+
+`GetLastData()` This method should return last inserted data
+
+`SearchData($keyword)` This method should return search result data available on the database in array structure
+
+`GetDataTable($condition)` This method should return search result data available on the database in datatables json format
+
+These pre-defined method above created to give developer the start point. 
+Puko framework have this to offer consistency and because most database operation can handled by these pre-defined method. 
+Let's see it through sample code:
+
+InventoryModel.php
 
 ```php
-$id_mahasiswa = Mahasiswa::Create(array(
-    'Nama' => 'Didit Velliz',
-    'Jurusan' => 'Informatika',
-    'IPK' => 4.00,
-    ...
-));
-```
-
-Untuk melakukan proses update data, anda dapat menggunakan **Update()**.
-
-```php
-$id_mahasiswa = Mahasiswa::Update(array('Id' => $id_mahasiswa), array(
-    'Nama' => 'Didit Velliz',
-    'Jurusan' => 'Informatika',
-    'IPK' => 4.00,
-    ...
-));
-```
-
-> Perhatian: anda dapat menggunakan petunjuk kolom lain untuk melakukan update data.
-
-```php
-$id_mahasiswa = Mahasiswa::Update(array('Jurusan' => 'Informatika'), array(
-    'Nama' => 'Didit Velliz',
-    'Jurusan' => 'Informatika',
-    'IPK' => 4.00,
-    ...
-));
-```
-
-|Fungsi|Parameter|Parameter Kembalian|
-|Save()|array|**ID** atau **false**|
-|Update()|array dan array|**true** atau **false**|
-|GetData()|String query|**array** atau **null**|
-|Delete()|array|**true** atau **false**|
-
-Anda juga dapat membuat model dari turunan kelas tersebut.
-
-```php
-class Perwalian extends Mahasiswa {
-```
-
-> Perhatian: semua kelas model harus diletakan di dalam folder model yang telah disediakan.
-
-Berikut ini adalah contoh lengkap model sederhana yang bisa anda buat.
-
-```php
-namespace model;
-
-use pukoframework\pda\DBI;
-
-class Perwalian extends Mahasiswa {
-
-    public static function RataRataIPK() {
-        $sql = "SELECT AVG(IPK) FROM Mahasiswa;";
-        $data = DBI::Prepare($sql)->GetData();
-        
-        return $data;
-    }
-    
-    public static function GetIPK($id_mahasiswa) {
-        $sql = "SELECT IPK FROM Mahasiswa WHERE Id = @1;";
-        $data = DBI::Prepare($sql)->FirstRow($id_mahasiswa);
-        
-        return $data;
+public static function SearchData($keyword = []) {
+    $strings = "";
+    foreach ($keyword as $column => $values) {
+        $strings .= sprintf(" AND (%s = '%s') ", $column, $values);
     }
 
-    public static function ResetIPK($id_mahasiswa) {
-        $sql = "UPDATE Mahasiswa SET IPK = 0.0 WHERE Id = @1;";
-        $data = DBI::Prepare($sql)->Run($id_mahasiswa);
-        
-        return $data;
-    }        
+    $sql = sprintf("SELECT i.id, i.created, i.name, i.descriptions
+    FROM inventory i
+    WHERE (i.created IS NOT NULL) %s;", $strings);
+
+    return DBI::Prepare($sql)->GetData();
 }
 ```
 
-Jika membuat turunan model, anda dapat memanfaatkan kelas static bernama DBI untuk melakukan manipulasi data. 
-Contoh pengunaan DBI dapat anda lihat pada contoh lengkap model di atas yang menggunakan tiga cara pemakaian DBI.
-
 ```php
-DBI::Prepare($sql)->GetData();
+//now we using InventoryModel. Our custom class that extends inventory plugin model.
+$inventoru = InventoryModel::SearchData([
+    'created' => '2020-08-14'
+]);
 ```
 
-**GetData()** digunakan untuk mengambil keseluruhan data dari query yang dijalankan. Data yang dikembalikan berupa array berindeks.
-Selain itu, kita juga bisa menyisipkan parameter secara bebas melalui parameter masukan dari **GetData()** itu sendiri sesuai dengan
-jumlah parameter yang di definisikan di dalam query.
+Why puko have this type of interface? The goal is uniformity. But keep in mind it's optional,
+you can have your own way to work with the databases.
+
+---
+
+**DBI**
+
+You already know how to do CRUD operations with **data object wiring**. This section will explain with code sample
+another set of feature available in DBI.
+
+* `Prepare`
+
+To pass your sql query into DBI classes.
 
 ```php
-$sql = "SELECT * FROM Mahasiswa WHERE Id = @1;";
-DBI::Prepare($sql)->GetData($Id);
+$sql = "SELECT * FROM inventory WHERE (id = @1);";
+$response = DBI::Prepare($sql);
+```
+
+* `GetData()`
+
+Used to retrieve all data from the database in arrays indexed format. Prepared statement is also available.
+You can se it from example below:
+
+```php
+$sql = "SELECT * FROM inventory WHERE (id = @1);";
+$response = DBI::Prepare($sql)->GetData($id);
 ```
 
 ```php
-$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 AND IPK = @2;";
-DBI::Prepare($sql)->GetData($Id, $IPK);
+$sql = "SELECT * FROM inventory WHERE (id = @1) AND (name = @2);";
+$response = DBI::Prepare($sql)->GetData($id, $name);
 ```
 
 ```php
-$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 AND IPK = @2 AND Jurusan = @3;";
-DBI::Prepare($sql)->GetData($Id, $IPK, $Jurusan);
+$sql = "SELECT * FROM inventory WHERE (id = @1) AND (name = @2) AND (created = @3);";
+$response = DBI::Prepare($sql)->GetData($id, $name, $created);
 ```
 
-Terdapat juga penggunaan **FirstRow()** untuk mengambil hanya baris pertama saja dari data terpilih dengan kembalian berupa array tak berindeks.
+* `FirstRow()`
+
+As `GetData()` but only retrieve 1 row data in single array formats. Prepared statement is also available.
+You can se it from example below:
 
 ```php
-$sql = "SELECT * FROM Mahasiswa WHERE Id = @1 LIMIT 1;";
-DBI::Prepare($sql)->FirstRow();
+$sql = "SELECT * FROM inventory WHERE (id = @1) LIMIT 1;";
+$response = DBI::Prepare($sql)->FirstRow();
 ```
 
-Terdapat juga penggunaan **Run()** untuk mengirim query saja. Biasanya digunakan untuk eksekusi stored procedure dan *query sql* selain *select*.
+* Run()
+
+For executing query. Usually used for executing stored procedure and non select query.
 
 ```php
-$sql = "UPDATE Mahasiswa SET IPK = 0.0 WHERE Id = @1;";
-DBI::Prepare($sql)->Run();
-```
-
-Anda juga dapat melihat *file* konfigurasi yang disimpan dari proses *Scaffolding* pada *file* config/database.php dengan format file berikut.
- 
-```php
-return array(
-    'dbType' => 'mysql',
-    'host' => 'localhost',
-    'user' => 'root',
-    'pass' => '',
-    'dbName' => '',
-    'port' => 3306
-);
+$sql = "UPDATE inventory SET name = 'Laptop Ultrabooks' WHERE (id = @1);";
+$response = DBI::Prepare($sql)->Run($id);
 ```
