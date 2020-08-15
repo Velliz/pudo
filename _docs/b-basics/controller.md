@@ -88,7 +88,7 @@ public function member() {
 }
 ```
 
-* Controller in *Puko* have additionl feature named *docs tag*.
+* Controller in *Puko* have additional feature named *docs tag*.
 
 ```php
 /**

@@ -4,52 +4,118 @@ category: Basics
 order: 3
 ---
 
-Untuk dapat menggunakan model, anda harus terlebih dahulu memiliki *base model* yang disediakan dalam *Scaffolding*.
-Sintaks berikut dapat anda jalankan untuk membuat sebuah model.
+Let's get to know about model. The (M) layer of puko framework HMVC pattern.
+This part of puko has responsible to connecting your app with a database 
+or multiple database for Create, Read, Update and Delete operations.
+Database in puko handled by the DataBase Interface (DBI) singleton objects.
 
-```text
+But, before that, we need setup a database connections. To summarize the process we often using `pukoconsole` command:
+
+```
 php puko setup db
 ```
 
-> Perhatian: sampai saat ini *Puko* framework baru mendukung secara penuh database MySQL & MariaDB.
+Items asked:
 
-Setelah menekan enter, anda akan dibimbing untuk melengkapi konfigurasi database dengan isian sebagai berikut.
+|Items|Description|Examples|
+|---|---|---|
+|Database Type|only supports MySQL for now|mysql|
+|Hostname|Databaase IP address|localhost|
+|Port|Databaase port address|3306|
+|Schema Name|Schema name as identifier for multiple database|primary|
+|Database Name|Name of databases|inventory|
+|Username|User databases|root|
+|Password|Paassword databases|******|
 
-```text
-host name     : ...
+> At the end wizard is asking for another connection you can answer with y/n
+
+What this process means?
+
+Puko will save the connection setting in `config/database.php` file 
+and generate corresponding PHP class model as **data object wiring** with your database model.
+Those files generated and saved in `plugins/model/<schema>` directory.
+
+> That file should not be modified
+
+So, why we need **data object wiring**?
+
+At concept level, data object wiring inspired by Data Access Object (DAO) patterns 
+but only implement the wiring mechanism to keep it small and simple.
+And because we usually don't remember clearly the column on database entity. 
+So with object wiring you now have clues about your column on the database in case you forget.
+Especially when used with good IDE, those tools can provide auto-completions trough your data.
+Enough theory, let's see it in action.
+
+Assumed you have basic knowledge on MySQL and have a database table `inventory` and you already done executing setup db command above.
+This is example of what inside table `inventory`:
+
+|id|name|created|descriptions|
+|---|---|---|---|
+|1|Chair|2020-08-15|Minimalist chair made from pine woods|
+|2|Laptop|2020-08-16|Gaming notebooks with core i7 and RTX2070 Max-Q|
+
+> Alert: tables name must only contain letters without special character or space due to limitations of php class name rules.
+
+Create or save operations:
+
+```php
+$inventory = new plugins\model\primary\inventory();
+$inventory->id = $_POST['id'];
+$inventory->name = $_POST['name'];
+$inventory->created = date('Y-m-d H:i:s');
+$inventory->descriptions = $_POST['descriptions'];
+
+$inventory->save();
 ```
 
-Dapat di isi dengan *Alamat IP* lokasi mesin database, secara default kita bisa mengisikan **localhost**.
+Read operations:
 
-```text
-host port     : ...
+```php
+$inventory = new plugins\model\primary\inventory(1);
+
+echo (array) $inventory;
 ```
 
-Dapat di isi dengan *port* database, secara default kita bisa mengisikan **3306**.
+Update or modify operations:
 
-```text
-username      : ...
+```php
+$inventory = new plugins\model\primary\inventory(1);
+$inventory->id = $_POST['id'];
+$inventory->name = $_POST['name'];
+$inventory->created = date('Y-m-d H:i:s');
+$inventory->descriptions = $_POST['descriptions'];
+
+$inventory->modify();
 ```
 
-Dapat di isi dengan user database, secara default kita bisa mengisikan **root**.
+Delete or remove operations:
 
-```text
-password      : ...
+```php
+$inventory = new plugins\model\primary\inventory(1);
+
+$inventory->remove();
 ```
 
-Dapat di isi dengan password database, secara default kita bisa mengosongkannya.
+Get all data:
 
-```text
-database name : ...
+```php
+$all = plugins\model\primary\inventory::GetAll();
 ```
 
-Dapat di isi dengan nama skema database.
+As you can see. Basic CRUD operations is simple and don't need to use any manual typed SQL query.
 
-> Perhatian: nama tabel tidak boleh diawali dengan angka serta nama tabel tidak diperbolehkan mengandung spasi.
+---
 
-Setelah selesai, jika konfigurasi yang di masukan benar. Maka akan ada informasi model apa saja yang berhasil di buat.
-Anda bisa mengaksesnya melalui intansiasi objek sesuai dengan nama tabelnya. 
-Untuk nama tabel Mahasiswa, maka anda dapat memanggil **GetAll()** untuk mengambil keseluruhan datanya.
+> The DataBase Interface (DBI) in puko framework for now only support MySQL and MariaDB. 
+
+---
+
+**Alternative**
+
+You can also make database operation trough DBI without using `pukoconsole` command.
+We call it old way methods. The PHP class/file required must located in outer model folder.
+
+> TODOC
 
 ```php
 $data['mahasiswa'] = Mahasiswa::GetAll();
