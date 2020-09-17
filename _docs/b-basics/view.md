@@ -4,10 +4,14 @@ category: Basics
 order: 4
 ---
 
-View pada *Puko* diatur dengan sistem master dan content, master terletak di dalam folder *assets/master* 
-sedangkan content lokasinya mengikuti tata letak controller yang *file*-nya sudah otomatis di buat saat *Scaffolding* Routes.
-Secara *default* ketika anda memulai sebuah proyek baru dengan *Puko*. 
-Anda akan memiliki satu buah file bernama master.html yang berfungsi sebagai awal dengan struktur *file* berikut ini.
+View in puko is divided into master layout and hierarchical content generated automatically when you execute
+console command `php puko routes view add ...`. The most important thing you should know in first is: '_View part in puko don't have logic_'.
+Role model of view in puko is enough for render data, also render data in list with loop tags.
+
+> As the view layer in HMVC should do their job to **Presenting Data**. 
+> You can utilize the full potential of JavaScript if want to build rich animation or logic in view. 
+
+As *default* when *Puko* installed with composer you have this `master.html` file as starting point of view:
 
 ```html
 <!DOCTYPE html>
@@ -15,84 +19,102 @@ Anda akan memiliki satu buah file bernama master.html yang berfungsi sebagai awa
 <head>
     <meta charset="UTF-8">
     <title>{!title}</title>
+    <style>
+        body {
+            background-color: #039BE5;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <div>
-{CONTENT}
+    {CONTENT}
 </div>
+<br>
+<br>
 {!part(css)}
 {!part(js)}
 </body>
 </html>
 ```
 
-> Perhatian: tag dapat anda lihat secara lengkap pada sesi tutorial **Puko Template Engine**.
+> Utilize pure html file. So the file cannot disrupted with php syntax when the file grow bigger.
 
-Jika diperhatikan, maka anda akan menemukan tag dengan dua jenis kerangka, {!} dan {CONTENT}.
+As you can see Puko have a template syntax tag like `{!title}` `{CONTENT}` `{!part()}`. This called PTE tag.
+If you want to know more about the PTE tag, you can see the official project and documentation [here](https://github.com/Velliz/pte). 
 
-```text
-{CONTENT}
-```
+Let's describe what that tag is doing in our html file:
 
-CONTENT berfungsi sebagai pewadah tempat diletakannya content html nantinya.
+* Tag `{!title}`
 
-```text
-{!part(css)}
-{!part(js)}
-```
+This tag used for rendering atomic data. In this case the tag will render value from variables called **title**.
+ 
+* Tag `{CONTENT}`
 
-part() berfungsi sebagai pewadah tempat diletakannya assets.
+This tag will load the content html file in runtime.
 
-Anda juga dapat membuat beberapa *file* master selain master.html
+* Tag `{!part(css)}`
+
+This tag will place the css file declared form content html file.
+
+* Tag `{!part(js)}`
+
+This tag will place the JavaScript file declared form content html file.
+
+You also can have more than one master html file. 
+This is useful when you need different template layout for different user roles for examples:
 
 ```text
 master.html
 master-admin.html
 master-guest.html
-master-siswa.html
+master-owner.html
 ```
 
-Selain master, terdapat juga content yang seperti disinggung diawal, 
-lokasinya mengikuti tata letak controller yang *file*-nya sudah otomatis di buat saat *Scaffolding* Routes.
-Jadi, jika anda membuat routes dengan format berikut.
+Besides the master html file. There is also _hierarchical content_ placed in same structure as routing definitions.
+This synchronization and restrictions applied to enforce HMVC always implemented in the right way. 
+So when you make a view routing like this:
+
+`php puko routes view add accounts/user/{?}/links`
 
 ```text
-php puko routes view add akun/tautan
-
-controller     : akun\user
-function       : profile
-accept         : GET,POST
+controller     : accounts\user
+function       : links
+accept         : get,post
 ```
 
-Maka anda akan menemukan file content anda pada direktori berikut.
+So you can find the html file in this hierarchical folder structure:
 
 ```text
 - assets/
   - html/
     - id/
-      - akun/
+      - accounts/
         - user/
-          - profile.html
+          - links.html
 ```
+
+Controller file
 
 ```text
 - controller/
-  - akun/
+  - accounts/
     - user.php
 ```
 
-Untuk mengatur master apa yang hendak digunakan pada sebuah content, anda dapat mengaturnya melalui controller.
+Now, what about when you have a master html file more than one file? 
+You can create a new controller and easily switch between them with this command:
 
 ```php
 /**
- * #Master master-siswa.html
+ * #Master master-admin.html
  */
 class user extends View {
     
-    public function profile() {
+    public function links() {
     
     }
 }
 ```
 
-> Perhatian: jika anda tidak mendefinisikan **#Master master-siswa.html** maka secara otomatis controller akan mencari master default yaitu **master.html**
+> Note: if the **#Master master-admin.html** command not declared. Puko will automatically reffer the default **master.html**
