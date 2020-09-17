@@ -4,60 +4,47 @@ category: Basics
 order: 5
 ---
 
-Service dinyatakan ketika sebuah kelas controller menurunkan kelas Service.
+Use service to create web-service. Because puko directly return the data in json format.
+You can instantly scaffolds your service with `php puko routes serice add ...`.
+Querying data and return it at the end of controller functions. 
+The noticeable thing you can find is in controller at the extends section.
 
 ```php
-class nilai extends Service {
+class students extends Service {}
 ```
+You're right! The controller file is simply extends `Service` to create web-service instead `View` that processing html file.
 
-Perbedaanya adalah pada return data. Alih-alih mencari halaman html dan merendernya, Serive akan langsung membuat representasi data JSON dari return yang dihasilkan *function*.
-Namun, tentu dengan beberapa atribut tambahan yang ditambahkan secara otomatis.
-
-* time   - server execution time.
-* status - biasanya terdiri dari **success** atau **failed**.
-* data   - disini data dari return function terletak.
-* token  - data tambahan yang berfungsi untuk perlindungan dari CSRF.
-
-```json
-{
-  "time": 0.0010089874267578,
-  "status": "success",
-  "data": {
-    "token": "356cb1c5693c6481e08599b553e50c25b43aca30fbed5ad877a319f6eb7d7a42"
-  }
-}
-```
-
-Contoh, jika anda mempunyai controller dengan return function berikut.
+For example, if we have the controller showed bellow:
 
 ```php
-public function siswa() {
-    return array(
-        'NIK' => '1266409',
-        'Nama' => 'Didit Velliz',
-        'Usia' => 22,
-        'Keahlian' => array(
+public function students() {
+
+    //app logic in here
+    //database operation maybe in here to
+
+    return [
+        'Identification' => 'ID120027103',
+        'Name' => 'Didit Velliz',
+        'Age' => 26,
+        'Skills' => [
             'PHP', 'MySQL'
-        )
-    );
+        ]
+    ];
 }
 ```
 
-Maka json yang dihasilkan ketika halaman tersebut di buka adalah.
+So the json representational of the data returned from controller is:
 
 ```json
 {
-  "time": 0.33715486526489,
-  "status": "success",
-  "data": {
-    "NIK": "1266409",
-    "Nama": "Didit Velliz",
-    "Usia": 22,
-    "Keahlian": [
+    "Identification": "ID120027103",
+    "Name": "Didit Velliz",
+    "Age": 16,
+    "Skills": [
       "PHP",
       "MySQL"
-    ],
-    "token": "356cb1c5693c6481e08599b553e50c25b43aca30fbed5ad877a319f6eb7d7a42"
-  }
+    ]
 }
 ```
+
+Passing dynamic data retrieved from url parameter is also possible with `{?}` keywords when create new route.

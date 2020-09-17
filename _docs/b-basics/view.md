@@ -38,7 +38,7 @@ As *default* when *Puko* installed with composer you have this `master.html` fil
 </html>
 ```
 
-> Utilize pure html file. So the file cannot disrupted with php syntax when the file grow bigger.
+> Puko utilize pure html file for View layer. So the file cannot disrupted with php syntax when the file grow bigger.
 
 As you can see Puko have a template syntax tag like `{!title}` `{CONTENT}` `{!part()}`. This called PTE tag.
 If you want to know more about the PTE tag, you can see the official project and documentation [here](https://github.com/Velliz/pte). 
