@@ -4,36 +4,30 @@ category: Basics
 order: 6
 ---
 
-*Authentication* pada Puko Framework dapat dibuat lewat *Scaffolding*. 
+First step to set up an *Authentication* features in Puko Framework is typing this command in console/terminal: 
 
 ```text
-php puko setup auth ...
+php puko setup auth <auth_name>
 ```
 
-Dengan parameter ... yang bisa anda isi sesuai dengan nama kelas yang anda inginkan. 
-Anda juga bisa membuat beberapa jenis *Authentication* seperti berikut.
+You can type any name related to the entity. ex: `StudentAuth`, `GuestAuth` and so on. 
+You can have more than one auth features to.
+
+For example the command should look like this:
 
 ```text
-php puko setup auth SiswaAuth
+php puko setup auth StudentAuth
 ```
 
-```text
-php puko setup auth DosenAuth
-```
-
-```text
-php puko setup auth JurusanAuth
-```
-
-Sebuah *file class* akan otomatis dibuat sesuai dengan nama yang diisikan. Anda bisa melihatnya pada direktori.
+After the command executed *file class* will auto-generated and placed in _plugins/auth_ directory.
 
 ```text
 - plugins/
   - auth/
-    - SiswaAuth.php
+    - StudentAuth.php
 ```
 
-Jika *file* tersebut dibuka, maka akan terlihat tiga fungsi ini menunggu untuk dilengkapi.
+If you open the *file*, you can see bellow empty method:
 
 ```php
 public function Login($username, $password)
@@ -52,70 +46,84 @@ public function GetLoginData($id)
 }
 ```
 
+That method supposed to be filled with your own custom Authentication implementation.
+
+---
+
 **Login($username, $password)**
 
-Untuk implementasi login, anda bisa menuliskan logika login dalam fungsi ini.
-Misalnya melakukan *select* data dari database seperti contoh berikut.
+For login, you can validate your username and password received from function param 
+and validate trough models or CURL request.
 
 ```php
 public function Login($username, $password)
 {
-    $siswa = SiswaModel::GetByUsernamePassword($username, md5($password));
-    return $siswa['ID'];
+    $student = model\primary\StudentModel::GetByUsernamePassword($username, $password);
+    $dataToSecure = [
+        "id" => $student['id'],
+        "username" => $student['user'],
+        "class" => $student['class']
+    ];
+    $permission = ["STUDENT"];
+    return new PukoAuth($dataToSecure, $permission);
 }
 ```
 
-> Perhatian: Login wajib melakukan return ID atau *single value* lain sebagai patokan data yang akan disimpan oleh framework ke dalam COOKIES. 
+> login must return a PukoAuth class object.
 
-Kemudian, anda dapat menjalankan *function* Login pada controller seperti contoh berikut.
+Then, you can implement the login code on *controller* with the syntax like this example:
 
 ```php
-$login = Session::Get(SiswaAuth::Instance())->Login($username, $password, Auth::EXPIRED_1_WEEK);
+$login = Session::Get(StudentAuth::Instance())->Login($username, $password);
 ```
 
-**SiswaAuth::Instance()** merupakan pemagilan objek dari kelas yang telah kita modifikasi kode loginnya.
- 
-**Auth::EXPIRED_1_WEEK** Adalah *static value* yang dapat digunakan untuk menentukan lamanya login.
-Terdapat beberapa *static value* lain yaitu.
+**SiswaAuth::Instance()** is the object build automatic by puko to auto-wire the login process.
 
-|EXPIRED_1_HOUR|
-|EXPIRED_1_DAY|
-|EXPIRED_1_WEEK|
-|EXPIRED_1_MONTH|
+For `Session` and `Cookies`. If login process success. 
+Then the **$login** variable assigned will have `true` value and `false` if the login process failed.
 
-Jika login berhasil, maka variabel **$login** akan bernilai *true*. Jika gagal variabel **$login** akan bernilai *false*.
+For `Bearer`. If the login process success.
+Then the **$login** variable assigned will hold the string encrypted data.
+If fails, **$login** variable will have *false*.
 
 **Logout()**
 
-Anda bisa menuliskan kode apa yang akan dijalankan sebelum user melakukan logout.
-Misalnya membuat log dan sebagainya dengan contoh sebagai berikut.
-                                           
+This is logout callbacks. You can write any code to clean up the logout process. 
+
 ```php
 public function Logout()
 {
-    $date = new DateTime();
-    SiswaModel::LogoutStamps($date->format('Y-m-d H:i:s'));
+    //cleanup process here
+    return true;
 }
 ```
 
 **GetLoginData($id)**
 
-Untuk mengambil kembali data yang telah di *return* dari fungsi login kamu bisa menggunakan *function* ini.
-parameter masukan *$id* adalah nilai yang di *return* dari fungsi Login.
-
-Pada contoh di atas kita menyimpan ID dari user siswa yang berhasil login. 
-Sehingga untuk mendapatkan data user siswa yang lengkap, maka kita bisa melakukan panggilan *model* seperti contoh berikut.
+To validate an Authentication, you must decode back the encryption string generated on the login process.
+So to simply that process, puko utilized an GetLoginData as callback function 
+after decoding string information that hold 2 parameters. 
+The first is `$secure` that contain all of `$dataToSecure` supplied in login process. 
+Same to second `$permission` param, will contain all permission code supplied in login process.
  
 ```php
-public function GetLoginData($id)
+public function GetLoginData($secure, $permission)
 {
-    return SiswaModel::GetUserById($id);
+    return [
+        "data" => $secure,
+        "authorization" => $permission
+    ];
 }
 ```
 
-Jika login telah berhasil, anda dapat melindungi *function* yang ada dengan *command* berikut.
+---
+
+If you want to protect controller function accessed from not-authenticated user. 
+You can seal-it with the auth doc command like below.
+
 ```php
 /**
  * #Auth session true
  */
+public function create() {}
 ```
