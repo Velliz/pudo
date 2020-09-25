@@ -77,7 +77,7 @@ Then, you can implement the login code on *controller* with the syntax like this
 $login = Session::Get(StudentAuth::Instance())->Login($username, $password);
 ```
 
-**SiswaAuth::Instance()** is the object build automatic by puko to auto-wire the login process.
+**StudentAuth::Instance()** is the object build automatic by puko to auto-wire the login process.
 
 For `Session` and `Cookies`. If login process success. 
 Then the **$login** variable assigned will have `true` value and `false` if the login process failed.

@@ -4,30 +4,22 @@ category: Basics
 order: 7
 ---
 
-Untuk mengimplementasikan role, anda perlu memodifikasi kode login seperti contoh berikut.
+Role is part-of the Auth. You can see it in `PukoAuth` class instance as seconds parameter:
 
 ```php
 public function Login($username, $password)
 {
-    $siswa = SiswaModel::GetByUsernamePassword($username, md5($password));
-    
-    Session::Get($this)->SetPermission(array(
-        'SISWA', 'ALUMNI'
-    ));
-    
-    return $siswa['ID'];
+    ...
+    $permission = [];
+    return new PukoAuth([], $permission);
 }
 ```
-
-**Session::Get($this)->SetPermission()** digunakan untuk menandakan role apa saja yang diperbolehkan oleh user yang sudah login.
-
-Jika role telah ditetapkan, anda dapat menggunakannya dengan mengganti tanda + dengan role yang dimaksudkan.
 
 ```php
 /**
  * #Auth session true
  */
-public function profile() {
+public function profile()
 ```
 
 Ditambahkan menjadi seperti ini jika ingin mengijinkan siswa saja.
@@ -37,7 +29,7 @@ Ditambahkan menjadi seperti ini jika ingin mengijinkan siswa saja.
  * #Auth session true
  * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@SISWA
  */
-public function profile() {
+public function profile()
 ```
 
 Dirubah menjadi seperti ini jika ingin mengijinkan alumni saja.
@@ -47,5 +39,5 @@ Dirubah menjadi seperti ini jika ingin mengijinkan alumni saja.
  * #Auth session true
  * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@ALUMNI
  */
-public function profile() {
+public function profile()
 ```
