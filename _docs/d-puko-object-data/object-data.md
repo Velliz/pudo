@@ -1,5 +1,5 @@
 ---
-title: Object Data
+title: Basic CRUD
 category: Puko Object Data
 order: 1
 ---
@@ -76,7 +76,7 @@ class bibit_pohon extends Model
 }
 ```
 
-> Attention: you don't need to create this class because it is automatically generated in the scaffolding ** php puko setup db **
+> Attention: you don't need to create this class because it is automatically generated in the scaffolding `php puko setup db`
 
 The first part to pay attention to is the class declaration:
 
