@@ -4,7 +4,8 @@ category: Basics
 order: 7
 ---
 
-Role is part-of the Auth. You can see it in `PukoAuth` class instance as seconds parameter:
+Role is part-of the Auth. For specifying what user can do, what user cannot do. and so on. 
+At implementation level, you can see it in `PukoAuth` class instance as seconds parameter:
 
 ```php
 public function Login($username, $password)
@@ -15,29 +16,22 @@ public function Login($username, $password)
 }
 ```
 
-```php
-/**
- * #Auth session true
- */
-public function profile()
-```
+from code sample above, you have permission wrapped as array of 'strings', so any authentication can consists of
+no permission, one permission, or many permissions as needed.
 
-Ditambahkan menjadi seperti ini jika ingin mengijinkan siswa saja.
+Puko also have a doc command to seal a function with an permission code like this:
 
 ```php
 /**
  * #Auth session true
- * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@SISWA
+ * #Permission \pukoframework\auth\Bearer@\plugins\auth\UserAuth permissions@MANAGER
  */
 public function profile()
 ```
 
-Dirubah menjadi seperti ini jika ingin mengijinkan alumni saja.
+Permission defined as `MANAGER`. 
+So only user with this permission assigned can access the functions.
 
-```php
-/**
- * #Auth session true
- * #Permission \pukoframework\auth\Session@\plugins\auth\UserAuth permissions@ALUMNI
- */
-public function profile()
-```
+> You need to write full path with PSR-4 directory structure to your plugin auth class. 
+> `\pukoframework\auth\Bearer@\plugins\auth\UserAuth`
+
