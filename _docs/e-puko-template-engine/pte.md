@@ -4,31 +4,31 @@ category: Puko Template Engine
 order: 1
 ---
 
-Puko Template Engine adalah package yang membantu *Puko* mengolah tampilan. 
-Semua tag yang bisa digunakan terangkum pada tabel berikut.
+Puko Template Engine is a package that helps *Puko* process displayed html.
+All tags that can be used are summarized in the following table.
 
-| Tags | Description |
-| --- | --- |
-| {!x} | tag untuk mencetak nilai atau **Elements** |
+|Tags|Description|
+|---|---|
+| {!x} | tags to print values, data or elements |
 | `<!--{!x}-->` | **open** looping tag |
 | `<!--{/x}-->` | **close** looping tag |
-| {!fn()} | **function** tag tanpa parameter |
-| {!fn(x)} | **function** tag dengan satu parameter |
-| {!fn(x,y,z)} | **function** tag dengan banyak parameters |
-| {CONTENT} | **CONTENT** tag hanya dikenali dalam master *file* |
+| {!fn()} | **function** tag without parameter |
+| {!fn(x)} | **function** tag with one parameter |
+| {!fn(x,y,z)} | **function** tag with many parameters |
+| {CONTENT} | **CONTENT** tag for injecting content html file to master *file* |
 | {!css(<link href="" rel="stylesheet" type="text/css" />)} | **CSS** tag |
 | {!js(<script src="" type="text/javascript"></script>)} | **JavaScript** tag |
-| {!part(css)} | memindahkan **CSS** tag ke lokasi ini |
-| {!part(js)} | memindahkan **JavaScript** tag ke lokasi ini |
-| {x.html} | tag untuk segment file |
+| {!part(css)} | move **CSS** tag from content html to tag location somewhere in master |
+| {!part(js)} | move **JavaScript** tag from content html to tag location somewhere in master |
+| {x.html} | tag for load segment file |
 
-> Perhatian: **Elements** dapat anda lihat secara lengkap pada sesi tutorial **Elements**.
+> Attention: **Elements** can be seen in the **Elements** document section.
 
 ```html
 <span>{!x}</span>
 ```
 
-Nilai **x** dapat ditukar menjadi nilai lain dengan cara.
+The value `x` can be exchanged into other values by means of.
 
 ```php
 public function siswa() {
@@ -37,13 +37,13 @@ public function siswa() {
 }
 ```
 
-Hasilnya, akan tampak menjadi seperti berikut.
+The result, will look like the following:
 
 ```html
 <span>34</span>
 ```
 
-Anda juga dapat mengubah x menjadi variabel lain sesuai kebutuhan.
+You can also convert `x` into other variables as needed.
 
 ```html
 <table>
@@ -57,7 +57,7 @@ Anda juga dapat mengubah x menjadi variabel lain sesuai kebutuhan.
 </table>
 ```
 
-Nilai **siswa** yang merupakan tag perulangan dapat ditukar menjadi nilai lain dengan cara.
+The value **student** which is a looping tag can be echoed as list of data in pte view rendering process.
 
 ```php
 public function siswa() {
@@ -65,6 +65,8 @@ public function siswa() {
     return $data;
 }
 ```
+
+Or, directly hardcode the data for now as projection.
 
 ```php
 public function siswa() {
@@ -84,7 +86,7 @@ public function siswa() {
 }
 ```
 
-Hasilnya, akan tampak menjadi seperti berikut.
+The result, will look like the following:
 
 ```html
 <table>
@@ -101,7 +103,9 @@ Hasilnya, akan tampak menjadi seperti berikut.
 </table>
 ```
 
-Penggunaan assets pada content dapat anda tuliskan seperti contoh berikut ini.
+---
+
+You can write the use of assets on content like the following example.
 
 ```html
 {!css(<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>)}
@@ -110,8 +114,8 @@ Penggunaan assets pada content dapat anda tuliskan seperti contoh berikut ini.
 {!js(<script src="assets/js/dataTables.bootstrap.min.js"></script>)}
 ```
 
-Pastikan anda juga telah melakukan forwarding file tersebut ke master template.
-Biasanya, di master template akan ada tag input berikut.
+Make sure you also have forwarded the file to the master template.
+Usually, in the master template there by default will have the following input tags.
 
 ```html
 <html>
@@ -126,12 +130,14 @@ Biasanya, di master template akan ada tag input berikut.
 </html>
 ```
 
-Untuk mendapatkan *base url*, dapat menuliskan sintaks fungsi berikut.
+---
+
+To get website `base url` in html file, write the following function syntax:
 
 ```text
 {!url()}
 ```
 
 ```text
-{!url(user/beranda)}
+{!url()}user/beranda
 ```
