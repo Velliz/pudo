@@ -4,10 +4,6 @@ category: Puko Object Data
 order: 1
 ---
 
-> WARNING: THIS FEATURE UNDER DEVELOPMENT ON dev-master BRANCH
-
-> Coming Soon in version 1.1.3
-
 Puko framework memanfaatkan instansiasi sebuah object untuk melakukan proses CRUD.
 Fitur ini dinamakan Object Data. Untuk dapat melihat bagaimana Object Data ini bekerja, anda dapat melihat contoh sintaks berikut:
 
@@ -73,21 +69,6 @@ class bibit_pohon extends Model
      * #Column ket varchar(225)
      */
     var $ket = null;
-
-    public static function Create($data)
-    {
-        return DBI::Prepare('bibit_pohon')->Save($data);
-    }
-
-    public static function Update($where, $data)
-    {
-        return DBI::Prepare('bibit_pohon')->Update($where, $data);
-    }
-
-    public static function GetAll()
-    {
-        return DBI::Prepare('SELECT * FROM bibit_pohon')->GetData();
-    }
 
 }
 ```
