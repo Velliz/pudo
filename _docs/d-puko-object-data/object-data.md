@@ -4,8 +4,9 @@ category: Puko Object Data
 order: 1
 ---
 
-Puko framework memanfaatkan instansiasi sebuah object untuk melakukan proses CRUD.
-Fitur ini dinamakan Object Data. Untuk dapat melihat bagaimana Object Data ini bekerja, anda dapat melihat contoh sintaks berikut:
+Puko framework primarily makes use of `plugins\model` object instantiation to perform CRUD processing.
+This feature called Object Data. 
+In order to see how this Data Object works, you can look at the following syntax example:
 
 ```php
 $bibit = new bibit_pohon();
@@ -13,6 +14,7 @@ $bibit->harga = 35000;
 $bibit->jenis_pohon = "Mangga Apel";
 $bibit->jumlah = 5;
 $bibit->ket = "Dari cangkokan super";
+
 $bibit->save();
 ```
 
@@ -24,15 +26,16 @@ $bibit->modify();
 $bibit->remove();
 ```
 
-Dari potongan kode di atas kita dapat mengetahui bahwa:
-* **bibit_pohon** adalah intansiasi sebuah kelas.
-* **bibit_pohon** mempunyai property berupa harga, jenis_pohon, jumlah dan ket.
-* **bibit_pohon** juga melakukan proses penyimpanan data dengan pemangglan fungsi save().
+From the code snippet above we can see that:
+* **bibit_pohon** is the intantiation of a class.
+* **bibit_pohon** have properties in the form of _harga, jenis_pohon, jumlah_ and _ket_.
+* **bibit_pohon** perform the data storage process by calling the `save()` function.
 
-Jika anda penasaran bagaimana bentuk dari kelas bibit_pohon itu sendiri, maka inilah kodenya:
+If you are curious about what the tree seed class itself looks like, then here's the code:
 
 ```php
 <?php
+
 namespace plugins\model;
 
 use pukoframework\pda\DBI;
@@ -73,9 +76,9 @@ class bibit_pohon extends Model
 }
 ```
 
-> Perhatian: anda tidak perlu membuat kelas ini karena sudah ter-generate otomatis dalam scaffolding **php puko setup db**
+> Attention: you don't need to create this class because it is automatically generated in the scaffolding ** php puko setup db **
 
-Bagian pertama yang perlu diperhatikan adalah deklarasi kelas:
+The first part to pay attention to is the class declaration:
 
 ```php
 /**
@@ -85,10 +88,11 @@ Bagian pertama yang perlu diperhatikan adalah deklarasi kelas:
 class bibit_pohon extends Model
 ```
 
-Dimana terdapat *#Table bibit_pohon* dan *#PrimaryKey id* yang menunjukan bahwa kelas tersebut terkoneksi dengan sebuah tabel di database
-dengan nama tabel **bibit_pohon** dan mempunyai primary key dengan nama kolom **id**. Saat proses scaffolding puko melakukan pembacaan struktur data hingga ke tingkat kolom.
+Where there is a `#Table bibit_pohon` and `#PrimaryKey id` which shows that the class connected to a table in the database
+with the name of the table **bibit_pohon** and have a primary key with the name of the column **id**. 
 
-Kemudian kita juga dapat memperhatikan property yang terbentuk di dalam kelas:
+During the scaffolding process, the puko reads the data structure down to the column level.
+We can also pay attention to the properties that are formed in the class:
 
 ```php
 /**
@@ -97,14 +101,9 @@ Kemudian kita juga dapat memperhatikan property yang terbentuk di dalam kelas:
 var $id = null;
 ```
 
-Penggunaan *#Column id int(10)* membuat puko framework mengetahui bahwa variabel itu terkait dengan kolom bernama sama di dalam database.
+Using `#Column id int (10)` let the puko framework know that the variable associated with the same named column in the database.
+So what's so interesting about this method?
 
-Lalu apa yang menarik dengan metode seperti ini?
-* Kita dapat melakukan proses CRUD tanpa menuliskan query SQL.
-* Membuat kolom database Code Completion-able pada kode PHP.
-* Menghasilkan sintaks yang rapih dan mudah.
-
-Terima kasih sudah menyempatkan diri mencoba framework ini. Jika ada masalah atau ide menarik silahkan mengirim sebuah issue pada
-repositori puko framework di [sini](https://github.com/Velliz/pukoframework/issues)
-
-> TODO: Table Relation Feature.
+* You can do CRUD processing without writing SQL queries.
+* Create code Completion-able database fields in PHP code.
+* Produces a clean and easy syntax.
