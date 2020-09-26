@@ -16,7 +16,7 @@ public function Login($username, $password)
 }
 ```
 
-from code sample above, you have permission wrapped as array of 'strings', so any authentication can consists of
+From code sample above, you have permission wrapped as array of 'strings', so any authentication can consists of
 no permission, one permission, or many permissions as needed.
 
 Puko also have a doc command to seal a function with an permission code like this:

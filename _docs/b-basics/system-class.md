@@ -1,10 +1,10 @@
 ---
-title: Error, Exception and Not Found
+title: System Class
 category: Basics
 order: 8
 ---
 
-## Global State
+### Global State
 
 * Error Display
 
@@ -26,7 +26,9 @@ You can customize the look of not found page at `assets/html/id/error/notfound.h
 
 > These page displayed if the error controller class `error.php` set to extend the View middleware.
 
-## Function & Doc Command State
+---
+
+### Function & Doc Command State
 
 * Not Authenticated
 
