@@ -4,7 +4,7 @@ category: Web Server
 order: 4
 ---
 
-Template konfigurasi ```Vagrantfile```
+Configuration file for `Vagrantfile`
 
 ```bash
 # -*- mode: ruby -*-
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Provisioning dengan ```bootstrap.sh```
+Provisioning with ```bootstrap.sh```
 
 ```bash
 # Update Packages
@@ -153,7 +153,7 @@ EOF
 sudo service nginx restart
 ```
 
-Additional steps untuk membuat mysql bisa di *remote access*
+Additional steps for make MySQL can have *remote access*
 
 ```bash
 vagrant ssh

@@ -4,8 +4,7 @@ category: Web Server
 order: 3
 ---
 
-Anda dapat mengatur *clean url* dengan nginx dengan konfigurasi ```nginx.conf```
-berikut
+You can set *clean url* with nginx with the following `nginx.conf` configuration:
 
 ```text
 server {
@@ -47,7 +46,7 @@ server {
 }
 ```
 
-Jika ingin mengatur *reverse proxy* anda dapat menggunakan sample berikut:
+If you want to set *reverse proxy* you can use the following sample:
 
 ```text
 server

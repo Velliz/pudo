@@ -4,8 +4,7 @@ category: Web Server
 order: 2
 ---
 
-Anda dapat mengatur *clean url* dengan apache dengan konfigurasi ```.htaccess```
-berikut
+You can set *clean url* with apache with the following `.htaccess` configuration:
 
 ```text
 <IfModule mod_rewrite.c>

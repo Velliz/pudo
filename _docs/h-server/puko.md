@@ -4,20 +4,19 @@ category: Web Server
 order: 1
 ---
 
-Anda dapat menjalankan *Puko* tanpa web server menggunakan 
-*command* berikut ini untuk menjalankankannya langsung.
+You can run *Puko* without using a web server. Use *command* below to run it directly:
 
 ```text
 php puko serve ...
 ```
 
-Anda dapat mengisikan ... dengan port yang diinginkan.
+You can change ... with the desired port.
 
 ```text
 php puko serve 4000
 ```
 
-Maka, anda dapat membukanya pada halaman web.
+Then, you can open it on a web browser:
 
 ```text
 localhost:4000

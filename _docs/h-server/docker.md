@@ -4,11 +4,11 @@ category: Web Server
 order: 5
 ---
 
-Template konfigurasi ```Dockerfile```
+Configuration template for ```Dockerfile```
 
 
 ```bash
-FROM alpine:3.8
+FROM alpine:3.11
 
 # Install packages
 RUN apk --no-cache add php7 php7-session php7-fpm php7-pdo php-pdo_mysql \
