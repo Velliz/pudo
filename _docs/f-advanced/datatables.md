@@ -6,66 +6,62 @@ order: 4
 
 **PHP Guide**
 
-DataTable adalah plugin jQuery yang paling populer digunakan untuk menampilkan data dalam bentuk tabel.
-Puko menyediakan fasilitas berupa kelas yang dapat menyederhanakan penggunaan DataTable terutama jika mengunakan
-fasilitas Server Processing. Untuk memulai, buat objek dari kelas DataTable dengan sintak berikut.
+DataTable is the most popular jQuery plugin used to display data in table.
+Puko provides libs that can simplify the use of DataTable, especially when using
+Datatable Serverside / Server Processing. 
 
-> Perhatian: anda direkomendasikan mengunakan DataTables pada controller turunan service saja.
-
-```php
-$table = new DataTables(DataTables::GET);
-```
+To get started, create an object from the DataTable class with the following syntax:
 
 ```php
 $table = new DataTables(DataTables::POST);
 ```
 
-Lalu definisikan kolom anda, terutama nama kolom yang di *select* dari database.
+Then define your columns, especially the column names that are *selected* from the database.
 
 ```php
 $table->SetColumnSpec(array(
-    "nama",
-    "umur",
-    "alamat",
+    "name",
+    "age",
+    "address",
     "email"
 ));
 ```
 
-Jika sudah, anda harus menuliskan *query sql* untuk diproses oleh kelas DataTable.
+After that, you must write a *sql* query to be processed later by the DataTable class.
 
 ```php
-$data->SetQuery("SELECT * FROM mahasiswa;");
+$table->SetQuery("SELECT * FROM students;");
 ```
 
-Lalu, anda dapat menampilkan data dengan menggunakan sintak berikut.
+Then, you can display the data using the following syntax.
 
 ```php
-return $data->GetDataTables(function ($result) {
+return $table->GetDataTables(function ($result) {
     foreach ($result as $key => $val) {
-        //modify data results here
+        //you can perform modification data results here
     }
     return $result;
 });
 ```
 
-Perlu diperhatikan bahwa fungsi **GetDataTables** menggunakan *callbacks* berupa *function* anonim.
-Fitur ini berguna jika seandainya anda ingin melakukan transformasi data sebelum data hasil *select*
-ditampilkan.
+Note that the **GetDataTables** function uses *callbacks* in the form of anonymous *functions*.
+This feature is useful if you want to perform data transformation before the result *select*
+shown.
 
 **JavaScript Guide**
 
-Pastikan anda telah memiliki file yang dibutuhkan dan ter-import dengan benar kedalam file html.
-Biasanya, pada puko templating engine versi 1.1.2 keatas penamaanya seperti berikut.
+Make sure you have the required DataTables js files and import them correctly into the html file.
+This is example for pte import syntax:
 
 ```html
 {!js(<script src="assets/js/jquery.dataTables.min.js"></script>)}
 {!js(<script src="assets/js/dataTables.bootstrap.min.js"></script>)}
 ```
 
-> Perhatian: disarankan menggunakan DataTables versi 1.10 atau yang lebih baru.
+> Attention: it is recommended to use DataTables version 1.10 or later.
 
-Pastikan anda juga telah melakukan forwarding file tersebut ke master template.
-Biasanya, di master template akan ada tag input berikut.
+Make sure you also have forwarded the file to the master template.
+Usually, in the master template there will be the following input tags.
 
 ```html
 <html>
@@ -80,43 +76,75 @@ Biasanya, di master template akan ada tag input berikut.
 </html>
 ```
 
-Kemudian, anda bisa menambahkan instansiasi kode JavaScript dari DataTables seperti dicontohkan berikut ini.
+Then, you can add JavaScript code instantiations of DataTables as shown below.
 
 ```javascript
-$('#table-printed').DataTable({
+let table = $('#example').DataTable({
     ajax: {
-        url: "",
-        data: {},
-        type: "GET",
+        type: "POST",
         dataType: "json",
-        dataFilter: function (data) {
-            var json = $.parseJSON(data);
-            json.draw = json.data.draw;
-            json.recordsTotal = json.data.recordsTotal;
-            json.recordsFiltered = json.data.recordsFiltered;
-            json.data = json.data.data;
-            if (json.data.error !== null) {
-                json.error = json.data.error;
+        responsive: true,
+        url: $('base#api').attr('href') + "backend/api/endpoint",
+        data: function (data) {
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        },
+        dataSrc: function (json) {
+            if (json.exception !== undefined) {
+                return [];
             }
-            return json.stringify(json);
+            return json.data;
         }
     },
-    columns: [
-        {"orderable": true},
-        {"orderable": true},
-        {"orderable": true},
-        {"orderable": false}
-    ],
     processing: true,
     serverSide: true,
+    lengthMenu: [
+        [10, 50, 100, 250, 350, 500],
+        ['10', '50', '100', '250', '350', '500']
+    ],
     dom: 'Bfrtip',
     buttons: [
-        'copyHtml5',
-        'excelHtml5',
-        'csvHtml5',
-        'pdfHtml5'
-    ]
+        {
+            extend: "pageLength",
+            className: "btn-sm"
+        },
+        {
+            extend: "copy",
+            className: "btn-sm"
+        },
+        {
+            extend: "csv",
+            className: "btn-sm"
+        },
+        {
+            extend: "excel",
+            className: "btn-sm"
+        },
+        {
+            extend: "pdfHtml5",
+            className: "btn-sm"
+        },
+        {
+            extend: "print",
+            className: "btn-sm"
+        },
+        {
+            text: 'Custom Button',
+            className: "btn-sm",
+            action: function ( e, dt, node, config ) {
+
+            }
+        }
+    ],
+    initComplete: function (settings, json) {
+
+    },
+    rowCallback: function (row, data) {
+
+    },
 });
 ```
 
-> Perhatian: jumlah *orderable* dalam *columns* harus sama dengan *SetColumnSpec* pada kode PHP.
+> Note: the number of *orderable* in *columns* must be the same as *SetColumnSpec* in your PHP code.
