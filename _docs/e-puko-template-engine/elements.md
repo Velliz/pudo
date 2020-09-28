@@ -4,49 +4,52 @@ category: Puko Template Engine
 order: 2
 ---
 
-Element adalah sebuah *feature set* dari puko template engine yang dapat berdiri sendiri, dapat di lepas pasang, serta dipakai ulang.
-Element sendiri terdiri dari satu paket file template *html*, *JavaScript* dan kelas PHP untuk mengatur logic dari element tersebut.
+Element is a *feature set* originally from pte, 
+template engine that is puko framework used to create segments of view as standalone modular modules, detachable, and reusable.
+The element itself consists of a package of html, javascript, css and php file to manage the logic of these elements.
 
-Untuk mengunduh set Element, anda bisa menggunakan *command* berikut.
+To download the Element set, you can use the following *command*.
  
 ```text
 php puko element download adminlte_description
 ```
 
-> Perhatian: anda dapat melihat element apa saja yang tersedia untuk diunduh dari halaman [berikut](https://github.com/Velliz/elements)
+Note: you can see what elements are available for download from [this](https://github.com/Velliz/elements) page.
 
-Anda juga dapat membuat sebuah elemen baru dengan perintah.
+You can also create a new element with the command:
 
 ```text
-php puko element add ...
+php puko element add <element_name>
 ```
 
-Anda bisa menamainya bebas sesuai dengan keinginan anda.
+You can change <element_name> name it freely according to your wishes.
 
-> Perhatian: penamaan element tidak boleh menggunakan spasi atau angka di depan.
+> Attention: naming elements must not use spaces or numbers in front of them. Recomends to include [a-z_A-Z] character only.
 
-Setelah sebuah element terbentuk atau didownload, maka element akan tersimpan pada direktori.
+After an element is created or downloaded, it will be saved in the directory like the structure shown below.
 
 ```text
 - plugins
   - elements
-   - ...
-     - ....php
-     - ....html
-     - ....js
-     - ....css
+   - <element_name>
+     - <element_name>.php
+     - <element_name>.html
+     - <element_name>.js
+     - <element_name>.css
 ```
 
-Untuk percobaan, anda dapat memulainya dari mendownload terlebih dahulu sampel berikut.
+For experiments, you can start from downloading the following sample first:
 
 ```text
 php puko element download adminlte_description
 ```
 
-Lalu membuat instansiasinya dari controller.
+Then create the Element instance from the controller.
 
 ```php
-public function profile() {
+public function profile() 
+{
+    //call element PHP class
     $desc = new AdminLTE_Description('desc', array());
     $desc->SetStyle(AdminLTE_Description::HORIZONTAL);
     $desc->SetDescription(array(
@@ -67,8 +70,10 @@ public function profile() {
 }
 ```
 
-Pada halaman html, anda dapat merender tag tersebut dengan menuliskan.
+On the html page, you can render the tag by writing:
 
 ```html
-<div>{!desc}</div>
+<div>
+    {!desc}
+</div>
 ```

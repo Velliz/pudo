@@ -114,6 +114,8 @@ You can write the use of assets on content like the following example.
 {!js(<script src="assets/js/dataTables.bootstrap.min.js"></script>)}
 ```
 
+> if you want to comment the code use html comment tag like this: {!js(<!--<script src="...bootstrap.min.js"></script>-->)}
+
 Make sure you also have forwarded the file to the master template.
 Usually, in the master template there by default will have the following input tags.
 
