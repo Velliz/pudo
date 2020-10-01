@@ -1,6 +1,6 @@
 ---
 title: Framework
-category: Helper Function
+category: Basics
 order: 8
 ---
 
