@@ -48,3 +48,15 @@ So the json representational of the data returned from controller is:
 ```
 
 Passing dynamic data retrieved from url parameter is also possible with `{?}` keywords when create new route.
+
+---
+
+Service also support a CRUD package. So you can generate multiple endpoints with one commands.
+Puko console command to do this job: `php puko routes service crud [schema]/[table]`.
+Schema will refer from database configuration and its default to **primary**.
+For tables is refer from table name in the database.
+
+Example: `php puko routes service crud primary/students`
+
+This command will generate a controller located at `controller/primary/students.php`
+with complete CRUD functions. Controller codes and Routes also automatically configured.
