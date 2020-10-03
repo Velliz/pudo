@@ -41,7 +41,8 @@ The noticeable thing you can find is in controllers at the extends section.
 class students extends Console {}
 ```
 
-You can also generate it with puko console `php puko routes console add <route_name>` for example:
+You can also generate it with puko console `php puko routes console add <route_name>` 
+but all console route will set for default to accept GET verb. for example:
 
 ```text
 php puko routes console add message/forgot/password/subscribe
