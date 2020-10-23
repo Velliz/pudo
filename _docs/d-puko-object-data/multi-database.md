@@ -57,6 +57,8 @@ $object = new models(null, 'dashboard');
 $object->save();
 ```
 
+> 'dashboard' is the schema name configured from `config/database.php`
+
 * Update
 
 ```php
