@@ -96,6 +96,8 @@ you can type in _console/terminal/powershell_:
 php puko setup db
 ```
 
+or if you only refresh the database (without re-write the database configuration): `php puko refresh db`
+
 Items asked:
 
 |Items|Description|Examples|

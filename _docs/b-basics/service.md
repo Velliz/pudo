@@ -12,6 +12,7 @@ The noticeable thing you can find is in controller at the extends section.
 ```php
 class students extends Service {}
 ```
+
 You're right! The controller file is simply extends `Service` to create web-service instead `View` that processing html file.
 
 For example, if we have the controller showed bellow:
