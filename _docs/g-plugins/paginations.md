@@ -1,6 +1,6 @@
 ---
 title: Pagination Class
-category: Advanced
+category: Plugins
 order: 3
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DataTable Class
-category: Advanced
+category: Plugins
 order: 4
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Multi Language
-category: Advanced
+category: Plugins
 order: 2
 ---
 

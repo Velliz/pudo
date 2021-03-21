@@ -1,6 +1,6 @@
 ---
 title: File Uploading
-category: Advanced
+category: Plugins
 order: 1
 ---
 
